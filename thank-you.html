@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Congratulations! Your Order is Confirmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #070710;
+    color: #f0f0ff;
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    overflow-x: hidden;
+  }
+  canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,255,136,0.25);
+    border-radius: 28px;
+    padding: 50px 40px;
+    max-width: 580px;
+    width: 100%;
+    text-align: center;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6a00, #ff3cac, #00e5ff, #00ff88);
+    border-radius: 28px 28px 0 0;
+  }
+  .icon { font-size: 72px; display: block; margin-bottom: 16px; animation: bounce 1s ease infinite alternate; }
+  @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+  h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 48px;
+    letter-spacing: 3px;
+    color: #00ff88;
+    margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(0,255,136,0.5);
+  }
+  .sub { color: #a0a0c0; font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
+  .sub strong { color: #ffd700; }
+  .step-list { text-align: left; margin-bottom: 30px; display: flex; flex-direction: column; gap: 14px; }
+  .step {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 14px 18px;
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff6a00, #ff3cac);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bangers', cursive; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .step-text strong { display: block; font-size: 14px; margin-bottom: 3px; }
+  .step-text span { font-size: 13px; color: #a0a0c0; }
+  .btn-drive {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #ff6a00, #ff3cac);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(255,106,0,0.4);
+    transition: all 0.2s;
+    margin-bottom: 20px;
+  }
+  .btn-drive:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 40px rgba(255,106,0,0.6); }
+  .note { font-size: 12px; color: rgba(160,160,192,0.6); }
+  .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 24px 0; }
+  .contact { font-size: 13px; color: #a0a0c0; }
+  .contact a { color: #00e5ff; text-decoration: none; }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="card">
+  <span class="icon">🎊</span>
+  <h1>CONGRATULATIONS!</h1>
+  <p class="sub">
+    Payment confirmed! Your <strong>2000+ Cartoon Stories Bundle</strong> is ready.<br>
+    Check your email — we've sent your invoice &amp; download link there too!
+  </p>
+
+  <div class="step-list">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>📥 Download Your Videos</strong>
+        <span>Click the button below to access your Google Drive folder with all 2000+ videos.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>📲 Start Posting Daily</strong>
+        <span>Post 2–3 reels/shorts every day on Instagram, YouTube &amp; Facebook.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>📈 Watch Your Account Grow</strong>
+        <span>Most creators see 10K+ followers within the first 30 days of consistent posting!</span>
+      </div>
+    </div>
+  </div>
+
+  <a class="btn-drive" id="driveBtn" href="#" target="_blank">
+    📁 Download Your Videos Now
+  </a>
+
+  <div class="divider"></div>
+  <p class="contact">
+    Need help? Email us at <a href="mailto:aroshi.vaidya25@gmail.com">aroshi.vaidya25@gmail.com</a><br>
+    Instagram: <a href="https://instagram.com/its.aroshi_vaidya" target="_blank">@its.aroshi_vaidya</a>
+  </p>
+  <p class="note" style="margin-top:12px">© 2026 Cartoon Stories Bundle. Invoice sent to your email.</p>
+</div>
+
+<script>
+  // Set the Drive link
+  const DRIVE_LINK = 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID';
+  document.getElementById('driveBtn').href = DRIVE_LINK;
+
+  // ─── CONFETTI ───
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+  const COLORS = ['#ff6a00','#ff3cac','#00e5ff','#ffd700','#00ff88','#a855f7','#ffffff'];
+  const particles = Array.from({length: 120}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height - canvas.height,
+    r: Math.random() * 7 + 3,
+    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    speed: Math.random() * 3 + 1.5,
+    spin: (Math.random() - 0.5) * 0.15,
+    angle: Math.random() * Math.PI * 2,
+    wobble: Math.random() * 0.08 + 0.03,
+    wobbleDir: 1,
+    wobblePos: Math.random() * Math.PI * 2,
+    shape: Math.random() > 0.5 ? 'rect' : 'circle'
+  }));
+
+  function drawParticle(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.angle);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = 0.85;
+    if (p.shape === 'rect') {
+      ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6);
+    } else {
+      ctx.beginPath();
+      ctx.arc(0, 0, p.r / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y += p.speed;
+      p.angle += p.spin;
+      p.wobblePos += p.wobble;
+      p.x += Math.sin(p.wobblePos) * 1.2;
+      if (p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = Math.random() * canvas.width;
+      }
+      drawParticle(p);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>
