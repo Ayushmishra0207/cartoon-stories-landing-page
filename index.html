@@ -2243,14 +2243,21 @@
         .finally(() => {
           // Always open Razorpay regardless of email result
           const rzParams = new URLSearchParams({
+            amount: total * 100,       // paise — auto-fills ₹99
             prefill_name: name,
             prefill_email: email,
             prefill_contact: '+91' + phone
           });
-          window.open('https://razorpay.me/@mishrajii?' + rzParams.toString(), '_blank');
+          const rzWindow = window.open('https://razorpay.me/@mishrajii?' + rzParams.toString(), '_blank');
           btn.classList.remove('loading');
           btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pay ₹<span id="payBtnAmount">${total}</span> — Get Instant Access`;
-          showSuccessModal();
+          // Show success modal only after payment tab is closed
+          const pollTimer = setInterval(() => {
+            if (!rzWindow || rzWindow.closed) {
+              clearInterval(pollTimer);
+              showSuccessModal();
+            }
+          }, 600);
         });
     }
 
