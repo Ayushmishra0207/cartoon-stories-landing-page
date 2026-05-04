@@ -1850,72 +1850,27 @@ function handlePayment(e) {
     return;
   }
 
-  const base = 99;
-  const upsell = upsellSelected ? 49 : 0;
-  const totalInPaise = (base + upsell) * 100;
-
   const btn = document.getElementById('payBtn');
   btn.classList.add('loading');
-  btn.textContent = '⏳ Opening Payment...';
+  btn.textContent = '⏳ Redirecting to Payment...';
 
-  // Razorpay Options
-  const options = {
-    key: 'rzp_live_REPLACE_WITH_YOUR_KEY', // ← Replace with your Razorpay API Key
-    amount: totalInPaise,
-    currency: 'INR',
-    name: 'Cartoon Stories Bundle',
-    description: '2000+ Cartoon Stories + Bonuses',
-    image: 'https://i.imgur.com/placeholder.png',
-    prefill: {
-      name: name,
-      email: email,
-      contact: '+91' + phone
-    },
-    notes: {
-      product: '2000+ Cartoon Stories Bundle',
-      upsell: upsellSelected ? 'Stickman Bundle' : 'None'
-    },
-    theme: {
-      color: '#ff6a00'
-    },
-    handler: function(response) {
-      // Payment success
-      console.log('Payment success:', response);
-      showSuccessModal();
-      // Here you would typically call your backend to fulfill the order
-    },
-    modal: {
-      ondismiss: function() {
-        btn.classList.remove('loading');
-        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pay ₹<span id="payBtnAmount">${base+upsell}</span> — Get Instant Access`;
-      }
-    }
-  };
+  // Build Razorpay payment link with prefilled details
+  const base = 'https://razorpay.me/@mishrajii';
+  const params = new URLSearchParams({
+    prefill_name: name,
+    prefill_email: email,
+    prefill_contact: '+91' + phone
+  });
 
-  try {
-    const rzp = new Razorpay(options);
-    rzp.open();
-  } catch(err) {
-    // Fallback if Razorpay key not set
-    console.warn('Razorpay not configured:', err);
+  setTimeout(() => {
+    window.open(base + '?' + params.toString(), '_blank');
     btn.classList.remove('loading');
-    showDemoModal();
-  }
+    btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pay ₹<span id="payBtnAmount">${99 + (upsellSelected ? 49 : 0)}</span> — Get Instant Access`;
+  }, 600);
 }
 
 function showSuccessModal() {
   document.getElementById('successModal').classList.add('open');
-}
-
-function showDemoModal() {
-  const modal = document.getElementById('successModal');
-  modal.querySelector('.modal-title').textContent = '⚙️ Demo Mode';
-  modal.querySelector('.modal-text').innerHTML = `
-    <strong>Payment gateway not configured yet.</strong><br><br>
-    To activate payments, replace <code>rzp_live_REPLACE_WITH_YOUR_KEY</code> in the HTML with your actual Razorpay API key.<br><br>
-    Get your key at: <strong>razorpay.com/dashboard</strong>
-  `;
-  modal.classList.add('open');
 }
 
 function closeModal() {
