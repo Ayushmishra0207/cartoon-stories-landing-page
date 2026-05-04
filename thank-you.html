@@ -150,16 +150,10 @@
     Click below to download all your videos now!
   </p>
 
-  <!-- Timer -->
-  <div class="timer-bar" id="timerBar">
-    <div class="timer-icon">⏳</div>
-    <div style="flex:1">
-      <div class="timer-label">Your access expires in</div>
-      <div class="timer-countdown" id="timerText">Loading...</div>
-      <div class="progress-wrap">
-        <div class="progress-fill" id="progressFill" style="width:100%"></div>
-      </div>
-    </div>
+  <!-- hidden expiry tracker (no UI) -->
+  <div id="timerBar" style="display:none">
+    <div id="timerText"></div>
+    <div class="progress-wrap"><div class="progress-fill" id="progressFill"></div></div>
   </div>
 
   <!-- Download button -->
@@ -197,13 +191,13 @@
   <div id="expiredSection" style="display:none">
     <div class="expired-box">
       <p>
-        Your 15-day download window has <strong>expired</strong>.<br><br>
-        To regain access to the 2000+ Cartoon Stories Bundle and all bonuses,
-        please purchase again at the same <strong>₹99 discounted price</strong>.
+        This download link is no longer active.<br><br>
+        To get access to the 2000+ Cartoon Stories Bundle and all bonuses again,
+        please place a new order at the same <strong>₹99 discounted price</strong>.
       </p>
     </div>
     <a class="btn-buy" href="https://ayushmishra0207.github.io/cartoon-stories-landing-page/">
-      🛒 Buy Again — ₹99 Only
+      🛒 Get Access Again — ₹99
     </a>
   </div>
 
@@ -224,7 +218,7 @@
     document.getElementById('mainIcon').classList.remove('bounce');
     document.getElementById('mainTitle').className = 'red';
     document.getElementById('mainTitle').textContent = 'ACCESS EXPIRED';
-    document.getElementById('mainSub').innerHTML = 'Your 15-day download window has ended.<br>Purchase again to get instant access.';
+    document.getElementById('mainSub').innerHTML = 'This download link is no longer active.<br>Purchase again to get instant access.';
     document.getElementById('timerBar').style.display = 'none';
     document.getElementById('downloadSection').style.display = 'none';
     document.getElementById('expiredSection').style.display = 'block';
@@ -269,7 +263,7 @@
     // No token — direct visit, show generic expired/invalid state
     setExpired();
     document.getElementById('mainTitle').textContent = 'INVALID LINK';
-    document.getElementById('mainSub').innerHTML = 'This link is invalid or has expired.<br>Please check your email for the correct link.';
+    document.getElementById('mainSub').innerHTML = 'This link is invalid.<br>Please check your email for the correct download link.';
   } else {
     try {
       const decoded    = atob(decodeURIComponent(token));
