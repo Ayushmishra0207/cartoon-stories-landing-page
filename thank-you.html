@@ -22,143 +22,293 @@
   }
   canvas#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
   .card {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(0,255,136,0.25);
     border-radius: 28px;
     padding: 50px 40px;
-    max-width: 580px;
-    width: 100%;
+    max-width: 580px; width: 100%;
     text-align: center;
   }
+  .card.expired { border-color: rgba(255,60,60,0.3); }
   .card::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, #ff6a00, #ff3cac, #00e5ff, #00ff88);
     border-radius: 28px 28px 0 0;
   }
-  .icon { font-size: 72px; display: block; margin-bottom: 16px; animation: bounce 1s ease infinite alternate; }
+  .card.expired::before { background: linear-gradient(90deg, #ff3030, #ff6a00); }
+  .icon { font-size: 72px; display: block; margin-bottom: 16px; }
+  .icon.bounce { animation: bounce 1s ease infinite alternate; }
   @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-12px); } }
   h1 {
     font-family: 'Bangers', cursive;
-    font-size: 48px;
-    letter-spacing: 3px;
-    color: #00ff88;
-    margin-bottom: 10px;
-    text-shadow: 0 0 30px rgba(0,255,136,0.5);
+    font-size: 48px; letter-spacing: 3px; margin-bottom: 10px;
   }
-  .sub { color: #a0a0c0; font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
+  h1.green { color: #00ff88; text-shadow: 0 0 30px rgba(0,255,136,0.5); }
+  h1.red   { color: #ff4444; text-shadow: 0 0 30px rgba(255,68,68,0.4); }
+  .sub { color: #a0a0c0; font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
   .sub strong { color: #ffd700; }
-  .step-list { text-align: left; margin-bottom: 30px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* Access timer bar */
+  .timer-bar {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+  }
+  .timer-icon { font-size: 28px; flex-shrink: 0; }
+  .timer-label { font-size: 13px; color: #a0a0c0; }
+  .timer-countdown {
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #ffd700;
+  }
+  .timer-countdown.urgent { color: #ff6a00; }
+  .progress-wrap {
+    height: 6px; background: rgba(255,255,255,0.08);
+    border-radius: 50px; overflow: hidden; margin-top: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff88, #00e5ff);
+    border-radius: 50px;
+    transition: width 1s linear;
+  }
+  .progress-fill.urgent { background: linear-gradient(90deg, #ff6a00, #ff3cac); }
+
+  /* Steps */
+  .step-list { text-align: left; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px; }
   .step {
     display: flex; align-items: flex-start; gap: 14px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 14px 18px;
+    border-radius: 14px; padding: 14px 18px;
   }
   .step-num {
     width: 32px; height: 32px; border-radius: 50%;
     background: linear-gradient(135deg, #ff6a00, #ff3cac);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Bangers', cursive; font-size: 18px;
-    flex-shrink: 0;
+    font-family: 'Bangers', cursive; font-size: 18px; flex-shrink: 0;
   }
   .step-text strong { display: block; font-size: 14px; margin-bottom: 3px; }
   .step-text span { font-size: 13px; color: #a0a0c0; }
+
+  /* Buttons */
   .btn-drive {
     display: inline-flex; align-items: center; gap: 10px;
     background: linear-gradient(135deg, #ff6a00, #ff3cac);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    padding: 16px 36px;
-    border-radius: 50px;
+    color: #fff; font-family: 'Nunito', sans-serif;
+    font-size: 18px; font-weight: 800;
+    padding: 16px 36px; border-radius: 50px;
     text-decoration: none;
     box-shadow: 0 8px 30px rgba(255,106,0,0.4);
-    transition: all 0.2s;
-    margin-bottom: 20px;
+    transition: all 0.2s; margin-bottom: 20px;
+    display: block; text-align: center;
   }
   .btn-drive:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 40px rgba(255,106,0,0.6); }
-  .note { font-size: 12px; color: rgba(160,160,192,0.6); }
-  .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 24px 0; }
+  .btn-buy {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, #ff6a00, #ff3cac);
+    color: #fff; font-family: 'Nunito', sans-serif;
+    font-size: 17px; font-weight: 800;
+    padding: 15px 32px; border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(255,106,0,0.4);
+    transition: all 0.2s; margin-bottom: 16px;
+    display: block; text-align: center;
+  }
+
+  /* Expired state */
+  .expired-box {
+    background: rgba(255,50,50,0.07);
+    border: 1px solid rgba(255,50,50,0.2);
+    border-radius: 16px; padding: 24px 22px; margin-bottom: 24px;
+  }
+  .expired-box p { font-size: 15px; color: #a0a0c0; line-height: 1.7; }
+  .expired-box strong { color: #ff6a00; }
+
+  .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 22px 0; }
   .contact { font-size: 13px; color: #a0a0c0; }
   .contact a { color: #00e5ff; text-decoration: none; }
+  @media(max-width:500px) { .card { padding: 36px 20px; } h1 { font-size: 36px; } }
 </style>
 </head>
 <body>
 <canvas id="confetti"></canvas>
-<div class="card">
-  <span class="icon">🎊</span>
-  <h1>CONGRATULATIONS!</h1>
-  <p class="sub">
-    Payment confirmed! Your <strong>2000+ Cartoon Stories Bundle</strong> is ready.<br>
-    Check your email — we've sent your invoice &amp; download link there too!
+<div class="card" id="mainCard">
+  <span class="icon bounce" id="mainIcon">🎊</span>
+  <h1 class="green" id="mainTitle">CONGRATULATIONS!</h1>
+  <p class="sub" id="mainSub">
+    Your <strong>2000+ Cartoon Stories Bundle</strong> is ready.<br>
+    Click below to download all your videos now!
   </p>
 
-  <div class="step-list">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-text">
-        <strong>📥 Download Your Videos</strong>
-        <span>Click the button below to access your Google Drive folder with all 2000+ videos.</span>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-text">
-        <strong>📲 Start Posting Daily</strong>
-        <span>Post 2–3 reels/shorts every day on Instagram, YouTube &amp; Facebook.</span>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-text">
-        <strong>📈 Watch Your Account Grow</strong>
-        <span>Most creators see 10K+ followers within the first 30 days of consistent posting!</span>
+  <!-- Timer -->
+  <div class="timer-bar" id="timerBar">
+    <div class="timer-icon">⏳</div>
+    <div style="flex:1">
+      <div class="timer-label">Your access expires in</div>
+      <div class="timer-countdown" id="timerText">Loading...</div>
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressFill" style="width:100%"></div>
       </div>
     </div>
   </div>
 
-  <a class="btn-drive" id="driveBtn" href="#" target="_blank">
-    📁 Download Your Videos Now
-  </a>
+  <!-- Download button -->
+  <div id="downloadSection">
+    <a class="btn-drive" id="driveBtn" href="#" target="_blank">
+      📁 Download Your 2000+ Videos Now
+    </a>
+
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>📥 Download to your device</strong>
+          <span>Open the Drive folder → select videos → download to phone/PC.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>📲 Post 2–3 reels daily</strong>
+          <span>Upload to Instagram Reels, YouTube Shorts & Facebook every day.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>📈 Watch followers & income grow</strong>
+          <span>Most creators hit 10K+ followers within 30 days of consistent posting!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expired section (hidden by default) -->
+  <div id="expiredSection" style="display:none">
+    <div class="expired-box">
+      <p>
+        Your 15-day download window has <strong>expired</strong>.<br><br>
+        To regain access to the 2000+ Cartoon Stories Bundle and all bonuses,
+        please purchase again at the same <strong>₹99 discounted price</strong>.
+      </p>
+    </div>
+    <a class="btn-buy" href="https://ayushmishra0207.github.io/cartoon-stories-landing-page/">
+      🛒 Buy Again — ₹99 Only
+    </a>
+  </div>
 
   <div class="divider"></div>
   <p class="contact">
-    Need help? Email us at <a href="mailto:aroshi.vaidya25@gmail.com">aroshi.vaidya25@gmail.com</a><br>
-    Instagram: <a href="https://instagram.com/its.aroshi_vaidya" target="_blank">@its.aroshi_vaidya</a>
+    Need help? <a href="mailto:aroshi.vaidya25@gmail.com">aroshi.vaidya25@gmail.com</a>
+    &nbsp;|&nbsp; <a href="https://instagram.com/its.aroshi_vaidya" target="_blank">@its.aroshi_vaidya</a>
   </p>
-  <p class="note" style="margin-top:12px">© 2026 Cartoon Stories Bundle. Invoice sent to your email.</p>
 </div>
 
 <script>
-  // Set the Drive link
-  const DRIVE_LINK = 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID';
-  document.getElementById('driveBtn').href = DRIVE_LINK;
+  const DRIVE_LINK  = 'https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link';
+  const ACCESS_DAYS = 15;
+
+  function setExpired() {
+    document.getElementById('mainCard').classList.add('expired');
+    document.getElementById('mainIcon').textContent = '⛔';
+    document.getElementById('mainIcon').classList.remove('bounce');
+    document.getElementById('mainTitle').className = 'red';
+    document.getElementById('mainTitle').textContent = 'ACCESS EXPIRED';
+    document.getElementById('mainSub').innerHTML = 'Your 15-day download window has ended.<br>Purchase again to get instant access.';
+    document.getElementById('timerBar').style.display = 'none';
+    document.getElementById('downloadSection').style.display = 'none';
+    document.getElementById('expiredSection').style.display = 'block';
+    stopConfetti();
+  }
+
+  function updateTimer(purchaseTs) {
+    const expiryTs   = purchaseTs + ACCESS_DAYS * 24 * 60 * 60 * 1000;
+    const totalMs    = ACCESS_DAYS * 24 * 60 * 60 * 1000;
+
+    function tick() {
+      const remaining = expiryTs - Date.now();
+      if (remaining <= 0) { setExpired(); return; }
+
+      const days  = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const mins  = Math.floor((remaining % 3600000) / 60000);
+      const secs  = Math.floor((remaining % 60000) / 1000);
+
+      const timerText = document.getElementById('timerText');
+      const progress  = document.getElementById('progressFill');
+      const pct       = (remaining / totalMs) * 100;
+      const isUrgent  = days < 3;
+
+      timerText.textContent = days > 0
+        ? `${days}d ${hours}h ${mins}m ${secs}s`
+        : `${hours}h ${mins}m ${secs}s`;
+      timerText.className = 'timer-countdown' + (isUrgent ? ' urgent' : '');
+      progress.style.width = pct + '%';
+      progress.className = 'progress-fill' + (isUrgent ? ' urgent' : '');
+
+      setTimeout(tick, 1000);
+    }
+    tick();
+  }
+
+  // Parse token from URL
+  const params = new URLSearchParams(window.location.search);
+  const token  = params.get('t');
+
+  if (!token) {
+    // No token — direct visit, show generic expired/invalid state
+    setExpired();
+    document.getElementById('mainTitle').textContent = 'INVALID LINK';
+    document.getElementById('mainSub').innerHTML = 'This link is invalid or has expired.<br>Please check your email for the correct link.';
+  } else {
+    try {
+      const decoded    = atob(decodeURIComponent(token));
+      const [tsStr]    = decoded.split('|');
+      const purchaseTs = parseInt(tsStr, 10);
+      const expiryTs   = purchaseTs + ACCESS_DAYS * 24 * 60 * 60 * 1000;
+
+      if (Date.now() > expiryTs) {
+        setExpired();
+      } else {
+        document.getElementById('driveBtn').href = DRIVE_LINK;
+        updateTimer(purchaseTs);
+        startConfetti();
+      }
+    } catch(e) {
+      setExpired();
+      document.getElementById('mainTitle').textContent = 'INVALID LINK';
+    }
+  }
 
   // ─── CONFETTI ───
   const canvas = document.getElementById('confetti');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+  const ctx    = canvas.getContext('2d');
+  let confettiActive = false;
+  let rafId;
+
+  function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
   const COLORS = ['#ff6a00','#ff3cac','#00e5ff','#ffd700','#00ff88','#a855f7','#ffffff'];
   const particles = Array.from({length: 120}, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height - canvas.height,
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight - innerHeight,
     r: Math.random() * 7 + 3,
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
     speed: Math.random() * 3 + 1.5,
     spin: (Math.random() - 0.5) * 0.15,
     angle: Math.random() * Math.PI * 2,
-    wobble: Math.random() * 0.08 + 0.03,
-    wobbleDir: 1,
     wobblePos: Math.random() * Math.PI * 2,
     shape: Math.random() > 0.5 ? 'rect' : 'circle'
   }));
@@ -169,32 +319,25 @@
     ctx.rotate(p.angle);
     ctx.fillStyle = p.color;
     ctx.globalAlpha = 0.85;
-    if (p.shape === 'rect') {
-      ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6);
-    } else {
-      ctx.beginPath();
-      ctx.arc(0, 0, p.r / 2, 0, Math.PI * 2);
-      ctx.fill();
-    }
+    if (p.shape === 'rect') { ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*1.6); }
+    else { ctx.beginPath(); ctx.arc(0, 0, p.r/2, 0, Math.PI*2); ctx.fill(); }
     ctx.restore();
   }
 
-  function animate() {
+  function animConfetti() {
+    if (!confettiActive) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => {
-      p.y += p.speed;
-      p.angle += p.spin;
-      p.wobblePos += p.wobble;
+      p.y += p.speed; p.angle += p.spin; p.wobblePos += 0.05;
       p.x += Math.sin(p.wobblePos) * 1.2;
-      if (p.y > canvas.height + 20) {
-        p.y = -20;
-        p.x = Math.random() * canvas.width;
-      }
+      if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
       drawParticle(p);
     });
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animConfetti);
   }
-  animate();
+
+  function startConfetti() { confettiActive = true; animConfetti(); }
+  function stopConfetti()  { confettiActive = false; cancelAnimationFrame(rafId); ctx.clearRect(0,0,canvas.width,canvas.height); }
 </script>
 </body>
 </html>

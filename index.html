@@ -18,8 +18,9 @@
     const EMAILJS_PUBLIC_KEY = 'ZBUg8SnAFr-9fU7rU';    // Account → API Keys
     const EMAILJS_SERVICE_ID = 'service_p2rya15';    // Email Services → Service ID
     const EMAILJS_TEMPLATE_ID = 'template_jzqplyk';   // Email Templates → Template ID
-    // Your Google Drive folder/file link (replace with your actual link)
-    const DRIVE_LINK = 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID';
+    const DRIVE_LINK = 'https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link';
+    const SITE_BASE  = 'https://ayushmishra0207.github.io/cartoon-stories-landing-page';
+    const ACCESS_DAYS = 15;
     emailjs.init(EMAILJS_PUBLIC_KEY);
   </script>
   <style>
@@ -2121,8 +2122,16 @@
       const base = 99;
       const upsell = upsellSelected ? 49 : 0;
       const total = base + upsell;
-      const orderId = 'ORD-' + Date.now().toString(36).toUpperCase();
+      const orderId   = 'ORD-' + Date.now().toString(36).toUpperCase();
       const orderDate = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      // Generate 15-day expiring access token: base64(purchaseTimestamp|email)
+      const purchaseTs  = Date.now();
+      const tokenRaw    = purchaseTs + '|' + email;
+      const accessToken = btoa(tokenRaw);
+      const accessUrl   = SITE_BASE + '/thank-you.html?t=' + encodeURIComponent(accessToken);
+      const expiryDate  = new Date(purchaseTs + ACCESS_DAYS * 24 * 60 * 60 * 1000)
+                            .toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
 
       const items = [
         { name: '2000+ Cartoon Stories Bundle (2000 videos + 500 bonus)', qty: 1, price: '₹99', original: '₹999' },
@@ -2139,14 +2148,15 @@
       ).join('');
 
       const templateParams = {
-        to_name: name,
-        to_email: email,
-        order_id: orderId,
-        order_date: orderDate,
-        phone: '+91' + phone,
-        total: '₹' + total,
-        item_rows: itemRows,
-        drive_link: DRIVE_LINK,
+        to_name:     name,
+        to_email:    email,
+        order_id:    orderId,
+        order_date:  orderDate,
+        phone:       '+91' + phone,
+        total:       '₹' + total,
+        item_rows:   itemRows,
+        access_url:  accessUrl,
+        expiry_date: expiryDate,
         upsell_note: upsellSelected
           ? 'Stickman Animation Bundle (2000+ 2D & 3D Animations) included!'
           : '',
