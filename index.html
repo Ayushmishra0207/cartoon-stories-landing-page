@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎥 2000+ Cartoon Stories Bundle | Copyright-Free Content Empire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+  :root {
+    --bg: #070710;
+    --bg2: #0d0d1a;
+    --bg3: #111124;
+    --orange: #ff6a00;
+    --orange2: #ff9a3c;
+    --cyan: #00e5ff;
+    --cyan2: #4dfff3;
+    --gold: #ffd700;
+    --green: #00ff88;
+    --pink: #ff3cac;
+    --text: #f0f0ff;
+    --text2: #a0a0c0;
+    --card: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --glow-orange: 0 0 30px rgba(255,106,0,0.5), 0 0 60px rgba(255,106,0,0.2);
+    --glow-cyan: 0 0 30px rgba(0,229,255,0.5), 0 0 60px rgba(0,229,255,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── CANVAS STARS ─── */
+  #stars-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ─── FLOATING EMOJIS ─── */
+  .float-emoji {
+    position: fixed;
+    font-size: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.4; }
+    90%  { opacity: 0.2; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ─── TOP URGENCY BAR ─── */
+  .urgency-bar {
+    background: linear-gradient(90deg, var(--orange), #e91e8c, var(--orange));
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  #countdown {
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-family: 'Bangers', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 40px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,106,0,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(0,229,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,60,172,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .badge-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: pulseBadge 2s ease infinite;
+  }
+
+  @keyframes pulseBadge {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,106,0,0.4); }
+    50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(255,106,0,0); }
+  }
+
+  .hero-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(42px, 8vw, 90px);
+    line-height: 1.05;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 30%, var(--orange2) 60%, var(--gold) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: heroFadeIn 0.8s ease both;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--text2);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    animation: heroFadeIn 0.8s 0.2s ease both;
+  }
+
+  .hero-subtitle strong { color: var(--cyan); }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── PRICE CARD ─── */
+  .price-card {
+    background: linear-gradient(135deg, rgba(255,106,0,0.15), rgba(255,60,172,0.1));
+    border: 1.5px solid rgba(255,106,0,0.4);
+    border-radius: 24px;
+    padding: 28px 40px;
+    margin-bottom: 30px;
+    animation: heroFadeIn 0.8s 0.4s ease both;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .price-card::before {
+    content: '🔥 LIMITED TIME OFFER';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--orange), var(--pink));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .price-original {
+    font-size: 18px;
+    color: var(--text2);
+    text-decoration: line-through;
+    margin-top: 14px;
+  }
+
+  .price-current {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(60px, 12vw, 100px);
+    line-height: 1;
+    color: var(--gold);
+    text-shadow: var(--glow-orange);
+    letter-spacing: 2px;
+  }
+
+  .price-current span {
+    font-size: 0.4em;
+    vertical-align: super;
+    color: var(--orange2);
+  }
+
+  .price-label {
+    color: var(--green);
+    font-weight: 800;
+    font-size: 14px;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  .discount-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #000;
+    font-weight: 900;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-top: 8px;
+  }
+
+  /* ─── CTA BUTTON ─── */
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), #ff3cac);
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 800;
+    padding: 18px 40px;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 40px rgba(255,106,0,0.5), 0 0 0 0 rgba(255,106,0,0.4);
+    animation: ctaPulse 2.5s ease infinite, heroFadeIn 0.8s 0.6s ease both;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-cta:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 60px rgba(255,106,0,0.7), 0 0 0 0 rgba(255,106,0,0.4);
+  }
+
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 8px 40px rgba(255,106,0,0.5), 0 0 0 0 rgba(255,106,0,0.4); }
+    50%       { box-shadow: 0 8px 40px rgba(255,106,0,0.5), 0 0 0 16px rgba(255,106,0,0); }
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--card-border);
+    background: var(--card);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+
+  .trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    animation: heroFadeIn 0.8s 0.8s ease both;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 600;
+  }
+
+  .trust-item .icon { color: var(--green); font-size: 16px; }
+
+  /* ─── STATS TICKER ─── */
+  .stats-strip {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, var(--bg2), var(--bg3), var(--bg2));
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 60px;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  .ticker-track:hover { animation-play-state: paused; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text2);
+  }
+
+  .ticker-item .num {
+    font-family: 'Bangers', cursive;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  /* ─── SECTION BASE ─── */
+  .section {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+  }
+
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(32px, 6vw, 58px);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--text2);
+    font-size: 16px;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .highlight-orange { color: var(--orange); }
+  .highlight-cyan { color: var(--cyan); }
+  .highlight-gold { color: var(--gold); }
+  .highlight-green { color: var(--green); }
+
+  /* ─── WHAT'S INSIDE GRID ─── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(255,106,0,0.04) 100%);
+    pointer-events: none;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(255,106,0,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(255,106,0,0.08);
+  }
+
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .feature-count {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: #fff;
+    font-weight: 900;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+
+  /* ─── BONUS SECTION ─── */
+  .bonus-section-bg {
+    background: linear-gradient(180deg, var(--bg), var(--bg2), var(--bg));
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .bonus-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bonus-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--orange);
+    border-radius: 16px;
+    padding: 18px 24px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.4s ease;
+  }
+
+  .bonus-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .bonus-card:hover {
+    border-left-color: var(--cyan);
+    background: rgba(0,229,255,0.04);
+  }
+
+  .bonus-emoji { font-size: 32px; flex-shrink: 0; }
+
+  .bonus-info { flex: 1; }
+
+  .bonus-name {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .bonus-detail { font-size: 13px; color: var(--text2); }
+
+  .bonus-value {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .bonus-was { font-size: 12px; color: var(--text2); text-decoration: line-through; }
+  .bonus-free {
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    color: var(--green);
+    letter-spacing: 1px;
+  }
+
+  .total-value-banner {
+    background: linear-gradient(135deg, rgba(255,106,0,0.15), rgba(255,60,172,0.1));
+    border: 1.5px solid rgba(255,106,0,0.3);
+    border-radius: 20px;
+    padding: 28px 30px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .total-value-banner .label { font-size: 14px; color: var(--text2); margin-bottom: 6px; }
+
+  .total-strike {
+    font-family: 'Bangers', cursive;
+    font-size: 32px;
+    color: var(--text2);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .total-now {
+    font-family: 'Bangers', cursive;
+    font-size: 64px;
+    color: var(--gold);
+    text-shadow: var(--glow-orange);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    position: relative;
+  }
+
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), var(--cyan));
+    opacity: 0.3;
+  }
+
+  .step-card {
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    margin: 0 auto 16px;
+    box-shadow: var(--glow-orange);
+  }
+
+  .step-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .step-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-family: Georgia, serif;
+    font-size: 80px;
+    color: rgba(255,106,0,0.1);
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .stars { color: var(--gold); font-size: 16px; margin-bottom: 12px; }
+
+  .testimonial-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text2);
+    margin-bottom: 16px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .author-name { font-weight: 800; font-size: 14px; }
+  .author-result { font-size: 12px; color: var(--green); font-weight: 700; }
+
+  /* ─── ACHIEVEMENT BANNER ─── */
+  .achievement-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 50px 0;
+  }
+
+  .achievement-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .achievement-num {
+    font-family: 'Bangers', cursive;
+    font-size: 38px;
+    color: var(--orange2);
+    letter-spacing: 1px;
+    display: block;
+  }
+
+  .achievement-label { font-size: 12px; color: var(--text2); margin-top: 4px; }
+
+  /* ─── FAQ ─── */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item.open {
+    border-color: rgba(255,106,0,0.3);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    gap: 12px;
+    user-select: none;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,106,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--orange);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 0 22px;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 22px 18px;
+  }
+
+  /* ─── ORDER SECTION ─── */
+  .order-section {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(180deg, var(--bg), var(--bg2));
+    border-top: 1px solid var(--card-border);
+    padding: 80px 0;
+  }
+
+  .order-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .order-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,106,0,0.25);
+    border-radius: 28px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .order-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--pink), var(--cyan));
+  }
+
+  .order-title {
+    font-family: 'Bangers', cursive;
+    font-size: 36px;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--gold);
+  }
+
+  .order-sub {
+    text-align: center;
+    color: var(--text2);
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  /* ─── FORM ─── */
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text2);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .form-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid var(--card-border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-input::placeholder { color: rgba(160,160,192,0.5); }
+
+  .form-input:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255,106,0,0.12);
+  }
+
+  .phone-row {
+    display: flex;
+    gap: 0;
+  }
+
+  .phone-prefix {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid var(--card-border);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text2);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .phone-row .form-input {
+    border-radius: 0 12px 12px 0;
+    border-left: none;
+  }
+
+  /* ─── ORDER SUMMARY ─── */
+  .order-summary {
+    background: rgba(255,106,0,0.06);
+    border: 1px solid rgba(255,106,0,0.15);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin: 24px 0;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  .summary-row.total {
+    border-top: 1px solid var(--card-border);
+    margin-top: 10px;
+    padding-top: 14px;
+    font-weight: 900;
+    font-size: 18px;
+  }
+
+  .summary-row .old { color: var(--text2); text-decoration: line-through; font-size: 12px; }
+  .summary-row .new { color: var(--gold); font-family: 'Bangers', cursive; font-size: 24px; letter-spacing: 1px; }
+
+  /* ─── UPSELL TOGGLE ─── */
+  .upsell-box {
+    background: linear-gradient(135deg, rgba(0,229,255,0.06), rgba(255,60,172,0.04));
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .upsell-box:hover { border-color: var(--cyan); }
+
+  .upsell-box.selected {
+    border-color: var(--cyan);
+    background: rgba(0,229,255,0.08);
+  }
+
+  .upsell-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .upsell-checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--card-border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .upsell-box.selected .upsell-checkbox {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: #000;
+  }
+
+  .upsell-info { flex: 1; }
+  .upsell-name { font-weight: 800; font-size: 14px; }
+  .upsell-detail { font-size: 12px; color: var(--text2); }
+
+  .upsell-prices { text-align: right; flex-shrink: 0; }
+  .upsell-old { font-size: 12px; color: var(--text2); text-decoration: line-through; }
+  .upsell-new { font-weight: 900; font-size: 16px; color: var(--cyan); }
+
+  /* ─── PAY BUTTON ─── */
+  .btn-pay {
+    width: 100%;
+    background: linear-gradient(135deg, var(--orange), #ff3cac);
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 18px 30px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(255,106,0,0.4);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-pay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,106,0,0.6);
+  }
+
+  .btn-pay:active { transform: translateY(0); }
+
+  .btn-pay.loading { opacity: 0.7; cursor: not-allowed; }
+
+  .secure-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  .secure-badge .icon { color: var(--green); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+    border-top: 1px solid var(--card-border);
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .footer-links a {
+    color: var(--text2);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--orange); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(160,160,192,0.5);
+  }
+
+  /* ─── STICKY BUY BAR ─── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    background: rgba(7,7,16,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,106,0,0.3);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .sticky-bar.visible { transform: translateY(0); }
+
+  .sticky-info { flex: 1; }
+  .sticky-name { font-weight: 800; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-price { font-family: 'Bangers', cursive; font-size: 22px; color: var(--gold); letter-spacing: 1px; }
+
+  .sticky-btn {
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    color: #fff;
+    font-family: 'Baloo 2', cursive;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(255,106,0,0.4);
+    transition: all 0.2s;
+  }
+
+  .sticky-btn:hover { transform: scale(1.05); }
+
+  /* ─── SUCCESS MODAL ─── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-card {
+    background: var(--bg2);
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 28px;
+    padding: 48px 36px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+  }
+
+  .modal-overlay.open .modal-card { transform: scale(1); }
+
+  .modal-icon { font-size: 64px; margin-bottom: 20px; display: block; }
+
+  .modal-title {
+    font-family: 'Bangers', cursive;
+    font-size: 36px;
+    color: var(--green);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .modal-text { color: var(--text2); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+
+  .modal-close {
+    background: var(--green);
+    color: #000;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { transform: scale(1.05); }
+
+  /* ─── SCROLL ANIMATION ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 640px) {
+    .price-card { padding: 22px 20px; }
+    .order-card { padding: 28px 20px; }
+    .steps-row::before { display: none; }
+    .sticky-bar { flex-wrap: wrap; }
+    .achievement-row { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── DECORATIVE LINES ─── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars background -->
+<canvas id="stars-canvas"></canvas>
+
+<!-- Floating emojis -->
+<div class="float-emoji" style="left:8%;animation-duration:18s;animation-delay:0s;font-size:1.5rem">🎬</div>
+<div class="float-emoji" style="left:22%;animation-duration:24s;animation-delay:4s;font-size:2rem">✨</div>
+<div class="float-emoji" style="left:55%;animation-duration:20s;animation-delay:8s;font-size:1.8rem">🎥</div>
+<div class="float-emoji" style="left:75%;animation-duration:22s;animation-delay:2s;font-size:1.6rem">💰</div>
+<div class="float-emoji" style="left:88%;animation-duration:19s;animation-delay:11s;font-size:1.4rem">🚀</div>
+<div class="float-emoji" style="left:35%;animation-duration:26s;animation-delay:6s;font-size:2.2rem">🎭</div>
+<div class="float-emoji" style="left:65%;animation-duration:15s;animation-delay:14s;font-size:1.3rem">⭐</div>
+
+<!-- ─── URGENCY BAR ─── -->
+<div class="urgency-bar">
+  🔥 <strong>FLASH SALE ENDS IN:</strong>
+  <span id="countdown">00:00:00</span>
+  &nbsp;| Only <strong>3 copies left!</strong>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="badge-new">🔥 Instagram Viral Content Empire</div>
+
+  <h1 class="hero-title">
+    2000+ Cartoon<br>Stories Bundle
+  </h1>
+
+  <p class="hero-subtitle">
+    <strong>Grow to 20K+ followers in 30 days</strong> — post ready-made, copyright-free cartoon content daily. No editing, no camera, no skills needed.
+  </p>
+
+  <div class="price-card">
+    <div class="price-original">Original Price: ₹999</div>
+    <div class="price-current"><span>₹</span>99</div>
+    <div class="price-label">✨ You Save ₹900 Today</div>
+    <div class="discount-badge">90% OFF — Today Only</div>
+  </div>
+
+  <a href="#order" class="btn-cta">
+    🛒 Grab Instant Access Now
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+
+  <div class="trust-row">
+    <div class="trust-item"><span class="icon">✅</span> Instant Download</div>
+    <div class="trust-item"><span class="icon">✅</span> 100% Copyright Free</div>
+    <div class="trust-item"><span class="icon">✅</span> Secure Payment</div>
+    <div class="trust-item"><span class="icon">✅</span> 30-Day Guarantee</div>
+  </div>
+</section>
+
+<!-- ─── STATS TICKER ─── -->
+<div class="stats-strip">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item">📈 <span class="num">10,000+</span> Happy Customers</div>
+    <div class="ticker-item">🎬 <span class="num">2,000+</span> Cartoon Stories</div>
+    <div class="ticker-item">⭐ <span class="num">4.9/5</span> Rating</div>
+    <div class="ticker-item">💰 <span class="num">₹1.2L+</span> Earned by Users</div>
+    <div class="ticker-item">🚀 <span class="num">20K+</span> Followers Gained</div>
+    <div class="ticker-item">🔥 <span class="num">90%</span> OFF Today</div>
+    <div class="ticker-item">📦 <span class="num">₹12,000</span> Worth Bonuses FREE</div>
+    <div class="ticker-item">⚡ <span class="num">3</span> Copies Left</div>
+    <!-- duplicated for seamless loop -->
+    <div class="ticker-item">📈 <span class="num">10,000+</span> Happy Customers</div>
+    <div class="ticker-item">🎬 <span class="num">2,000+</span> Cartoon Stories</div>
+    <div class="ticker-item">⭐ <span class="num">4.9/5</span> Rating</div>
+    <div class="ticker-item">💰 <span class="num">₹1.2L+</span> Earned by Users</div>
+    <div class="ticker-item">🚀 <span class="num">20K+</span> Followers Gained</div>
+    <div class="ticker-item">🔥 <span class="num">90%</span> OFF Today</div>
+    <div class="ticker-item">📦 <span class="num">₹12,000</span> Worth Bonuses FREE</div>
+    <div class="ticker-item">⚡ <span class="num">3</span> Copies Left</div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ─── WHAT'S INSIDE ─── -->
+<section class="section">
+  <div class="badge-new" style="margin:0 auto 16px;display:table">📚 What You Get</div>
+  <h2 class="section-title">Everything Inside <span class="highlight-orange">The Bundle</span></h2>
+  <p class="section-sub">Your complete content creation kit — post daily, grow fast, earn consistently.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-count">2000+ Videos</span>
+      <span class="feature-icon">🎬</span>
+      <div class="feature-title">Cartoon Moral Stories</div>
+      <div class="feature-desc">HD MP4 cartoon stories with English subtitles. Educational, engaging content for kids that parents love to share.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-count">500+ BONUS</span>
+      <span class="feature-icon">🎭</span>
+      <div class="feature-title">Short Cartoon Stories</div>
+      <div class="feature-desc">Bite-sized cartoon content perfect for Instagram Reels, YouTube Shorts, and Facebook — ready to post instantly.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-count">HD Quality</span>
+      <span class="feature-icon">📺</span>
+      <div class="feature-title">HD MP4 with Subtitles</div>
+      <div class="feature-desc">Crystal-clear high-definition video files with English subtitles baked in. Professional quality, zero effort from you.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-count">Fully Editable</span>
+      <span class="feature-icon">✏️</span>
+      <div class="feature-title">Add Your Branding</div>
+      <div class="feature-desc">Add your logo, watermark, and intro to every video. Make it uniquely yours — build your brand at scale.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-count">0% Restrictions</span>
+      <span class="feature-icon">🛡️</span>
+      <div class="feature-title">100% Copyright Free</div>
+      <div class="feature-desc">Never worry about DMCA strikes or copyright claims. Post freely on YouTube, Instagram, Facebook, and everywhere else.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-count">Instant</span>
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">Instant Digital Access</div>
+      <div class="feature-desc">Get download links delivered to your email within seconds of payment. No waiting, no shipping, no delays.</div>
+    </div>
+  </div>
+
+  <div class="achievement-row reveal">
+    <div class="achievement-item">
+      <span class="achievement-num" data-target="2000">0</span>
+      <div class="achievement-label">Videos Included</div>
+    </div>
+    <div class="achievement-item">
+      <span class="achievement-num" data-target="500">0</span>
+      <div class="achievement-label">Bonus Stories</div>
+    </div>
+    <div class="achievement-item">
+      <span class="achievement-num" data-target="10000">0</span>
+      <div class="achievement-label">Happy Creators</div>
+    </div>
+    <div class="achievement-item">
+      <span class="achievement-num" data-target="90">0</span>
+      <div class="achievement-label">% OFF Today</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── BONUSES ─── -->
+<div class="bonus-section-bg">
+  <section class="section">
+    <div class="badge-new" style="margin:0 auto 16px;display:table;background:linear-gradient(135deg,#00e5ff,#00ff88)">🎁 FREE Bonuses</div>
+    <h2 class="section-title"><span class="highlight-gold">₹12,000+</span> Worth Bonuses</h2>
+    <p class="section-sub">Included absolutely FREE with your purchase — a complete digital income toolkit.</p>
+
+    <div class="bonus-cards">
+      <div class="bonus-card">
+        <div class="bonus-emoji">📱</div>
+        <div class="bonus-info">
+          <div class="bonus-name">50 Crore+ WhatsApp User Database</div>
+          <div class="bonus-detail">Massive marketing database for promoting your content & affiliate products</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹3,999</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">💻</div>
+        <div class="bonus-info">
+          <div class="bonus-name">150+ Premium Software Collection</div>
+          <div class="bonus-detail">All categories — design, video editing, productivity & more</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹1,999</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">🎓</div>
+        <div class="bonus-info">
+          <div class="bonus-name">100+ Paid Courses</div>
+          <div class="bonus-detail">Master anything — digital marketing, video editing, affiliate income & more</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹2,499</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">🎨</div>
+        <div class="bonus-info">
+          <div class="bonus-name">1 Lakh+ Video Graphic Asset Packs</div>
+          <div class="bonus-detail">109 GB+ of templates, overlays, transitions & visual assets</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹1,999</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">📲</div>
+        <div class="bonus-info">
+          <div class="bonus-name">50,000+ YouTube Shorts Videos</div>
+          <div class="bonus-detail">Ready-to-upload viral shorts across all trending niches</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹999</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">🔥</div>
+        <div class="bonus-info">
+          <div class="bonus-name">12,000+ Motivation Reels Bundle</div>
+          <div class="bonus-detail">Viral motivational reels pack to skyrocket your social media growth</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹799</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">📊</div>
+        <div class="bonus-info">
+          <div class="bonus-name">1,000+ Excel Paid Templates</div>
+          <div class="bonus-detail">Professional business templates to save time and boost productivity</div>
+        </div>
+        <div class="bonus-value">
+          <div class="bonus-was">₹799</div>
+          <div class="bonus-free">FREE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-value-banner reveal">
+      <div class="label">Total Value of Everything</div>
+      <div class="total-strike">₹12,993</div>
+      <div class="total-now">₹99</div>
+      <div style="color:var(--green);font-weight:800;margin-top:8px">🎉 You Save ₹12,894 Today!</div>
+      <br>
+      <a href="#order" class="btn-cta" style="display:inline-flex;font-size:18px;padding:16px 36px">
+        🚀 Claim This Deal Now
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="section">
+  <h2 class="section-title">How It <span class="highlight-cyan">Works</span></h2>
+  <p class="section-sub">Three simple steps from purchase to passive income.</p>
+
+  <div class="steps-row">
+    <div class="step-card reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Place Your Order</div>
+      <div class="step-desc">Click BUY, enter your email and phone, complete the secure payment in seconds.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay:0.15s">
+      <div class="step-num">2</div>
+      <div class="step-title">Instant Access</div>
+      <div class="step-desc">Get download links delivered to your email instantly via PDF. Access 2000+ videos right away.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay:0.3s">
+      <div class="step-num">3</div>
+      <div class="step-title">Post & Earn</div>
+      <div class="step-desc">Post 2–3 videos daily on Instagram, YouTube, Facebook. Watch followers grow and income flow.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="section">
+  <div class="badge-new" style="margin:0 auto 16px;display:table;background:linear-gradient(135deg,#ffd700,#ff6a00)">⭐ Real Results</div>
+  <h2 class="section-title">What Our <span class="highlight-orange">Customers Say</span></h2>
+  <p class="section-sub">Real people, real results — from Instagram creators across India.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-text">"I gained <strong>12K+ followers in 3 weeks</strong> just by posting these reels daily. No editing, no stress — just consistent posting. Best investment I've made this year!"</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">P</div>
+        <div>
+          <div class="author-name">Priya M.</div>
+          <div class="author-result">📈 +12K followers in 3 weeks</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-text">"Started with 800 followers. Now at <strong>20K in 1 month</strong> and already made <strong>₹1.2 Lakh</strong> from affiliate links. This bundle changed everything for me."</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#00e5ff,#4dfff3);color:#000">K</div>
+        <div>
+          <div class="author-name">Krishna Makvana</div>
+          <div class="author-result">💰 ₹1.2L earned in 1 month</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-text">"I'm not even a content creator. Started as a side hustle — reached <strong>10.5K followers</strong> and made <strong>₹36,000</strong> through affiliate links. Never thought it'd be this easy!"</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#ff3cac,#a855f7)">N</div>
+        <div>
+          <div class="author-name">Neha Suresh</div>
+          <div class="author-result">🚀 10.5K followers + ₹36K earned</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-text">"Failed growing pages so many times before. After this reel pack — <strong>18K followers in 4 weeks</strong>. Got my first brand collab worth <strong>₹22,000</strong>. This stuff works!"</div>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:linear-gradient(135deg,#00ff88,#00e5ff);color:#000">R</div>
+        <div>
+          <div class="author-name">Rohan Mehta</div>
+          <div class="author-result">🤝 Brand collab worth ₹22K</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── FAQ ─── -->
+<section class="section">
+  <h2 class="section-title">Got <span class="highlight-cyan">Questions?</span></h2>
+  <p class="section-sub">Everything you need to know before buying.</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How do I earn ₹3,00,000+ per month with this?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Post these cartoon videos daily on Instagram Reels, Facebook, and YouTube Shorts. As your following grows, you earn through affiliate marketing, brand deals, and ad revenue. Many creators hit ₹30,000–₹1,00,000/month within 60–90 days of consistent posting.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Do I need any editing skills?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Absolutely not! All 2000+ videos are complete and ready to post. Simply download and upload to any platform. No editing software, no camera, no technical skills required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Are these really copyright-free?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Yes, 100% copyright-free. You can post them freely on YouTube, Instagram, Facebook, and any platform without DMCA strikes or copyright claims. You can also add your own branding and watermark.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How will I receive the product?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Immediately after payment, you'll receive a PDF to your registered email with download links for all 2000+ videos and bonuses. Access is instant — no waiting period.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How soon will I see follower growth?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Most users see growth within 7–14 days of consistent daily posting. Our customers have reported 10K–20K followers in 3–4 weeks when posting 2–3 videos per day.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Is there a refund policy?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">Yes! We offer a 30-day no-questions-asked money-back guarantee. If you're not completely satisfied, contact us and we'll refund you 100%. Your investment is completely risk-free.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── ORDER / PAYMENT SECTION ─── -->
+<div class="order-section" id="order">
+  <div class="order-container">
+    <div style="text-align:center;margin-bottom:30px">
+      <div class="badge-new" style="margin:0 auto 16px;display:table">🛒 Secure Checkout</div>
+      <h2 class="section-title">Complete Your <span class="highlight-orange">Order</span></h2>
+      <p style="color:var(--text2);font-size:14px">Join 10,000+ creators. Instant access after payment.</p>
+    </div>
+
+    <div class="order-card">
+      <div class="order-title">Order Now</div>
+      <div class="order-sub">⚡ Instant Digital Delivery to Your Email</div>
+
+      <form id="orderForm" onsubmit="handlePayment(event)">
+        <div class="form-group">
+          <label class="form-label" for="email">📧 Email Address *</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="yourname@gmail.com" required>
+          <div style="font-size:11px;color:var(--text2);margin-top:6px">Download link will be sent to this email</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">📱 Phone Number *</label>
+          <div class="phone-row">
+            <div class="phone-prefix">🇮🇳 +91</div>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="9876543210" pattern="[0-9]{10}" maxlength="10" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="name">👤 Full Name *</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Your Full Name" required>
+        </div>
+
+        <!-- Upsell -->
+        <div class="upsell-box" id="upsellBox" onclick="toggleUpsell()">
+          <div class="upsell-row">
+            <div class="upsell-checkbox" id="upsellCheck">✓</div>
+            <div class="upsell-info">
+              <div class="upsell-name">⭐ Add: Stickman Animation Bundle</div>
+              <div class="upsell-detail">2000+ 2D & 3D Animations for Creators — Use in Instagram, YouTube & Ads</div>
+            </div>
+            <div class="upsell-prices">
+              <div class="upsell-old">₹299</div>
+              <div class="upsell-new">+₹49</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>2000+ Cartoon Stories Bundle</span>
+            <div><span class="old">₹999</span>&nbsp;<strong style="color:var(--text)">₹99</strong></div>
+          </div>
+          <div class="summary-row" id="upsellRow">
+            <span>Stickman Animation Bundle</span>
+            <div><span class="old">₹299</span>&nbsp;<strong style="color:var(--text)">₹49</strong></div>
+          </div>
+          <div class="summary-row">
+            <span style="color:var(--green)">🎁 Bonuses (₹12,000 worth)</span>
+            <span style="color:var(--green);font-weight:800">FREE</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="new" id="totalDisplay">₹148</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-pay" id="payBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Pay ₹<span id="payBtnAmount">148</span> — Get Instant Access
+        </button>
+      </form>
+
+      <div class="secure-badges">
+        <div class="secure-badge"><span class="icon">🔒</span> SSL Secured</div>
+        <div class="secure-badge"><span class="icon">✅</span> Razorpay Protected</div>
+        <div class="secure-badge"><span class="icon">🔄</span> 30-Day Refund</div>
+        <div class="secure-badge"><span class="icon">⚡</span> Instant Delivery</div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px">
+        <img src="https://razorpay.com/assets/razorpay-glyph.svg" alt="Razorpay" style="height:20px;opacity:0.5;margin-right:8px;vertical-align:middle">
+        <span style="font-size:12px;color:var(--text2)">Powered by Razorpay — India's Most Trusted Payment Gateway</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-brand">🎬 CartoonStoriesBundle</div>
+  <div class="footer-links">
+    <a href="#order">Buy Now</a>
+    <a href="#" onclick="showModal('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showModal('terms')">Terms & Conditions</a>
+    <a href="mailto:aroshi.vaidya25@gmail.com">Contact Us</a>
+  </div>
+  <p class="footer-copy">
+    © 2026 Cartoon Stories Bundle. All rights reserved.<br>
+    For support: aroshi.vaidya25@gmail.com | Instagram: @its.aroshi_vaidya
+  </p>
+  <p style="font-size:11px;color:rgba(160,160,192,0.3);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto">
+    Disclaimer: Results mentioned are individual experiences. Income results vary and are not guaranteed. This is a digital product — no physical delivery.
+  </p>
+</footer>
+
+<!-- ─── STICKY BUY BAR ─── -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-info">
+    <div class="sticky-name">🎬 2000+ Cartoon Stories Bundle</div>
+    <div class="sticky-price">₹99 <span style="font-size:14px;color:var(--text2);text-decoration:line-through;font-family:Nunito">₹999</span></div>
+  </div>
+  <button class="sticky-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
+    🛒 Buy Now — 90% OFF
+  </button>
+</div>
+
+<!-- ─── SUCCESS MODAL ─── -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-card">
+    <span class="modal-icon">🎉</span>
+    <div class="modal-title">Payment Successful!</div>
+    <div class="modal-text">
+      Thank you for your purchase! Your download links and bonuses have been sent to your email address. Check your inbox (and spam folder) within 2 minutes.<br><br>
+      <strong>Welcome to the content creator family! 🚀</strong>
+    </div>
+    <button class="modal-close" onclick="closeModal()">✅ Got It — Check Email</button>
+  </div>
+</div>
+
+<script>
+// ─── STAR CANVAS ───
+const canvas = document.getElementById('stars-canvas');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createStars() {
+  stars = [];
+  for (let i = 0; i < 150; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.3,
+      alpha: Math.random(),
+      speed: Math.random() * 0.005 + 0.002
+    });
+  }
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.alpha += s.speed;
+    if (s.alpha > 1 || s.alpha < 0) s.speed *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${s.alpha * 0.6})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+
+resizeCanvas();
+createStars();
+drawStars();
+window.addEventListener('resize', () => { resizeCanvas(); createStars(); });
+
+// ─── COUNTDOWN TIMER ───
+function startCountdown() {
+  let saved = localStorage.getItem('cdown_end');
+  let end;
+  if (saved) {
+    end = parseInt(saved);
+    if (end < Date.now()) {
+      end = Date.now() + 23 * 60 * 60 * 1000 + 47 * 60 * 1000;
+      localStorage.setItem('cdown_end', end);
+    }
+  } else {
+    end = Date.now() + 23 * 60 * 60 * 1000 + 47 * 60 * 1000;
+    localStorage.setItem('cdown_end', end);
+  }
+
+  function tick() {
+    const diff = end - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').textContent = '00:00:00';
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('countdown').textContent =
+      String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    setTimeout(tick, 1000);
+  }
+  tick();
+}
+startCountdown();
+
+// ─── SCROLL ANIMATIONS ───
+const revealEls = document.querySelectorAll('.reveal, .feature-card, .bonus-card, .testimonial-card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), (entry.target.dataset.delay || 0) * 1);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+revealEls.forEach((el, i) => {
+  const parent = el.closest('.features-grid, .bonus-cards, .testimonials-grid');
+  if (parent) {
+    const siblings = Array.from(parent.children);
+    el.style.transitionDelay = (siblings.indexOf(el) * 0.1) + 's';
+  }
+  observer.observe(el);
+});
+
+// ─── COUNTER ANIMATION ───
+const counterEls = document.querySelectorAll('[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.textContent.replace(/[0-9]/g,'');
+      let start = 0;
+      const duration = 1500;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString('en-IN') + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counterEls.forEach(el => counterObserver.observe(el));
+
+// ─── STICKY BAR ───
+const heroSection = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+  const bar = document.getElementById('stickyBar');
+  bar.classList.toggle('visible', heroBottom < 0);
+});
+
+// ─── FAQ ───
+function toggleFAQ(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── UPSELL ───
+let upsellSelected = true;
+function toggleUpsell() {
+  upsellSelected = !upsellSelected;
+  const box = document.getElementById('upsellBox');
+  const check = document.getElementById('upsellCheck');
+  const row = document.getElementById('upsellRow');
+  box.classList.toggle('selected', upsellSelected);
+  check.textContent = upsellSelected ? '✓' : '';
+  row.style.display = upsellSelected ? 'flex' : 'none';
+  updateTotal();
+}
+
+function updateTotal() {
+  const base = 99;
+  const upsell = upsellSelected ? 49 : 0;
+  const total = base + upsell;
+  document.getElementById('totalDisplay').textContent = '₹' + total;
+  document.getElementById('payBtnAmount').textContent = total;
+}
+
+// Initialize upsell state
+document.getElementById('upsellBox').classList.add('selected');
+updateTotal();
+
+// ─── PAYMENT ───
+function handlePayment(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  if (!name || !email || !phone || phone.length !== 10) {
+    alert('Please fill in all fields correctly.');
+    return;
+  }
+
+  const base = 99;
+  const upsell = upsellSelected ? 49 : 0;
+  const totalInPaise = (base + upsell) * 100;
+
+  const btn = document.getElementById('payBtn');
+  btn.classList.add('loading');
+  btn.textContent = '⏳ Opening Payment...';
+
+  // Razorpay Options
+  const options = {
+    key: 'rzp_live_REPLACE_WITH_YOUR_KEY', // ← Replace with your Razorpay API Key
+    amount: totalInPaise,
+    currency: 'INR',
+    name: 'Cartoon Stories Bundle',
+    description: '2000+ Cartoon Stories + Bonuses',
+    image: 'https://i.imgur.com/placeholder.png',
+    prefill: {
+      name: name,
+      email: email,
+      contact: '+91' + phone
+    },
+    notes: {
+      product: '2000+ Cartoon Stories Bundle',
+      upsell: upsellSelected ? 'Stickman Bundle' : 'None'
+    },
+    theme: {
+      color: '#ff6a00'
+    },
+    handler: function(response) {
+      // Payment success
+      console.log('Payment success:', response);
+      showSuccessModal();
+      // Here you would typically call your backend to fulfill the order
+    },
+    modal: {
+      ondismiss: function() {
+        btn.classList.remove('loading');
+        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pay ₹<span id="payBtnAmount">${base+upsell}</span> — Get Instant Access`;
+      }
+    }
+  };
+
+  try {
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch(err) {
+    // Fallback if Razorpay key not set
+    console.warn('Razorpay not configured:', err);
+    btn.classList.remove('loading');
+    showDemoModal();
+  }
+}
+
+function showSuccessModal() {
+  document.getElementById('successModal').classList.add('open');
+}
+
+function showDemoModal() {
+  const modal = document.getElementById('successModal');
+  modal.querySelector('.modal-title').textContent = '⚙️ Demo Mode';
+  modal.querySelector('.modal-text').innerHTML = `
+    <strong>Payment gateway not configured yet.</strong><br><br>
+    To activate payments, replace <code>rzp_live_REPLACE_WITH_YOUR_KEY</code> in the HTML with your actual Razorpay API key.<br><br>
+    Get your key at: <strong>razorpay.com/dashboard</strong>
+  `;
+  modal.classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('successModal').classList.remove('open');
+}
+
+function showModal(type) {
+  const modal = document.getElementById('successModal');
+  if (type === 'privacy') {
+    modal.querySelector('.modal-title').textContent = '🔒 Privacy Policy';
+    modal.querySelector('.modal-text').innerHTML = 'We collect your email and phone number only to deliver your purchase. We do not share your data with third parties. Your payment is processed securely by Razorpay.';
+  } else {
+    modal.querySelector('.modal-title').textContent = '📋 Terms & Conditions';
+    modal.querySelector('.modal-text').innerHTML = 'This is a digital product. All sales are final except as covered by our 30-day refund policy. You may not resell or redistribute the content. By purchasing, you agree to use content only for personal or commercial use on your own social media accounts.';
+  }
+  modal.querySelector('.modal-close').textContent = 'Close';
+  modal.classList.add('open');
+}
+
+// ─── CLICK OUTSIDE MODAL ───
+document.getElementById('successModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ─── DUPLICATE TICKER FOR SEAMLESS LOOP ───
+const track = document.getElementById('tickerTrack');
+const trackWidth = track.scrollWidth / 2;
+let tickerAnim;
+let pos = 0;
+function animTicker() {
+  pos -= 0.5;
+  if (Math.abs(pos) >= trackWidth) pos = 0;
+  track.style.transform = `translateX(${pos}px)`;
+  tickerAnim = requestAnimationFrame(animTicker);
+}
+// Use CSS animation instead (already set)
+</script>
+</body>
+</html>
