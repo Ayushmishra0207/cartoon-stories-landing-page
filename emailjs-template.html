@@ -6,167 +6,219 @@
 -->
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#0d0d1a;font-family:'Helvetica Neue',Arial,sans-serif">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d1a;padding:30px 0">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <style>
+    @media only screen and (max-width:600px) {
+      .wrapper    { padding: 12px !important; }
+      .main-card  { border-radius: 16px !important; }
+      .header     { padding: 30px 20px !important; }
+      .header h1  { font-size: 26px !important; letter-spacing: 1px !important; }
+      .header p   { font-size: 14px !important; }
+      .section    { padding: 20px 16px !important; }
+      .btn-main   { font-size: 16px !important; padding: 15px 24px !important; border-radius: 40px !important; display:block !important; }
+      .drive-link { font-size: 13px !important; padding: 13px 14px !important; }
+      .item-name  { font-size: 12px !important; }
+      .total-amt  { font-size: 18px !important; }
+      .meta-row   { display: block !important; }
+      .meta-cell  { display: block !important; text-align: left !important; padding-top: 4px !important; }
+      .step-text  { font-size: 13px !important; }
+      .footer-sec { padding: 20px 16px 24px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#0a0a14;font-family:'Helvetica Neue',Arial,sans-serif;-webkit-text-size-adjust:100%">
+
+<table width="100%" cellpadding="0" cellspacing="0" class="wrapper" style="background:#0a0a14;padding:20px 16px">
   <tr><td align="center">
-    <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#111124;border-radius:20px;overflow:hidden;border:1px solid rgba(255,106,0,0.2)">
+  <table width="100%" cellpadding="0" cellspacing="0" class="main-card" style="max-width:560px;width:100%;background:#111124;border-radius:20px;overflow:hidden;border:1px solid rgba(255,106,0,0.25)">
 
-      <!-- HEADER -->
-      <tr>
-        <td style="background:linear-gradient(135deg,#ff6a00,#ff3cac);padding:40px 30px;text-align:center">
-          <div style="font-size:52px;margin-bottom:10px">🎉</div>
-          <h1 style="margin:0;color:#fff;font-size:32px;letter-spacing:2px;font-weight:900">CONGRATULATIONS!</h1>
-          <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:16px">Your order is confirmed & ready to download</p>
-        </td>
-      </tr>
+    <!-- ── HEADER ── -->
+    <tr>
+      <td class="header" align="center" style="background:linear-gradient(135deg,#ff6a00 0%,#e91e8c 100%);padding:36px 24px 28px">
+        <div style="font-size:48px;line-height:1;margin-bottom:10px">🎉</div>
+        <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:900;letter-spacing:2px;line-height:1.2">CONGRATULATIONS!</h1>
+        <p style="margin:10px 0 0;color:rgba(255,255,255,0.88);font-size:15px;line-height:1.5">Your order is confirmed &amp; ready to download</p>
+      </td>
+    </tr>
 
-      <!-- GREETING -->
-      <tr>
-        <td style="padding:32px 36px 0">
-          <p style="margin:0;font-size:18px;color:#f0f0ff;font-weight:700">Hey {{to_name}}, 👋</p>
-          <p style="margin:12px 0 0;font-size:15px;color:#a0a0c0;line-height:1.7">
-            Thank you for your purchase! Your <strong style="color:#ffd700">2000+ Cartoon Stories Bundle</strong> is ready for download.
-            You're now part of a community of 10,000+ creators growing their social media with copyright-free content. 🚀
-          </p>
-        </td>
-      </tr>
+    <!-- ── GREETING ── -->
+    <tr>
+      <td class="section" style="padding:24px 24px 0">
+        <p style="margin:0;font-size:17px;color:#f0f0ff;font-weight:700">Hey {{to_name}} 👋</p>
+        <p style="margin:10px 0 0;font-size:14px;color:#a0a0c0;line-height:1.75">
+          Thank you for your purchase! Your <strong style="color:#ffd700">2000+ Cartoon Stories Bundle</strong> is ready.
+          You're now part of 10,000+ creators growing on social media with copyright-free content. 🚀
+        </p>
+      </td>
+    </tr>
 
-      <!-- ACCESS BUTTON -->
-      <tr>
-        <td style="padding:28px 36px 10px;text-align:center">
-          <a href="{{access_url}}" style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;text-decoration:none;font-size:18px;font-weight:800;padding:16px 40px;border-radius:50px;box-shadow:0 8px 30px rgba(255,106,0,0.4)">
-            🎬 Access All Your Videos Now
-          </a>
-          <p style="margin:12px 0 0;font-size:12px;color:#a0a0c0">Save this email — you'll need this link to access your videos</p>
-        </td>
-      </tr>
+    <!-- ── MAIN ACCESS BUTTON ── -->
+    <tr>
+      <td class="section" align="center" style="padding:24px 24px 12px">
+        <a href="{{access_url}}" class="btn-main"
+           style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#ffffff;text-decoration:none;font-size:17px;font-weight:800;padding:16px 32px;border-radius:50px;line-height:1.3;box-shadow:0 6px 24px rgba(255,106,0,0.45)">
+          🎬&nbsp; Access All Your Videos Now
+        </a>
+        <p style="margin:10px 0 0;font-size:12px;color:#a0a0c0;line-height:1.5">Save this email — you need this link to access your videos</p>
+      </td>
+    </tr>
 
-      <!-- DIRECT DRIVE LINKS -->
-      <tr>
-        <td style="padding:10px 36px 28px">
-          <p style="margin:0 0 12px;font-weight:800;font-size:13px;color:#ffd700;letter-spacing:1px;text-transform:uppercase;text-align:center">📂 Direct Download Links</p>
-          <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;border-spacing:0 8px">
-            <tr>
-              <td style="padding:0">
-                <a href="https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link"
-                   style="display:block;background:rgba(255,106,0,0.1);border:1px solid rgba(255,106,0,0.3);color:#ff9a3c;text-decoration:none;font-size:14px;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center">
-                  📁 Bundle — Part 1
-                </a>
-              </td>
-            </tr>
-            <tr><td style="padding:6px 0 0"></td></tr>
-            <tr>
-              <td>
-                <a href="https://drive.google.com/drive/folders/0B-l7yn8Mkthyd2libWxRX2ZUNEE?resourcekey=0-2cKiETKA1Jpf8bQUNREuSg"
-                   style="display:block;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.25);color:#00e5ff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center">
-                  📁 Bundle — Part 2
-                </a>
-              </td>
-            </tr>
-            <tr><td style="padding:6px 0 0"></td></tr>
-            <tr>
-              <td>
-                <a href="https://drive.google.com/drive/folders/0B7G7wRlZICfEfmpnOEZacG9xQV9yTW94YUZqd3VyWXpteHpoZ3FYWkJFMlFJeWw5aFdaOTQ?resourcekey=0-kp9uzSHcG6clU0w_6l5szA"
-                   style="display:block;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.25);color:#00ff88;text-decoration:none;font-size:14px;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center">
-                  📁 Bundle — Part 3
-                </a>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+    <!-- ── DIRECT DRIVE LINKS ── -->
+    <tr>
+      <td class="section" style="padding:4px 24px 24px">
+        <p style="margin:0 0 10px;font-weight:800;font-size:12px;color:#ffd700;letter-spacing:1px;text-transform:uppercase;text-align:center">📂 Direct Download Links</p>
 
-      <!-- WHAT'S INCLUDED -->
-      <tr>
-        <td style="padding:0 36px">
-          <div style="background:rgba(255,106,0,0.07);border:1px solid rgba(255,106,0,0.2);border-radius:14px;padding:20px 22px">
-            <p style="margin:0 0 12px;font-weight:800;font-size:14px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">📦 What's In Your Bundle</p>
-            <p style="margin:6px 0;font-size:14px;color:#e0e0f0">✅ <strong>2000+ Cartoon Moral Stories</strong> — HD MP4 with subtitles</p>
-            <p style="margin:6px 0;font-size:14px;color:#e0e0f0">✅ <strong>500+ Short Cartoon Stories</strong> — Bonus, FREE</p>
-            <p style="margin:6px 0;font-size:14px;color:#e0e0f0">✅ <strong>100% Copyright Free</strong> — Safe on all platforms</p>
-            <p style="margin:6px 0;font-size:14px;color:#e0e0f0">✅ <strong>Completely Editable</strong> — Add your logo/watermark</p>
-            <p style="margin:6px 0;font-size:14px;color:#00ff88">🎁 <strong>₹12,000 Mega Bonus Pack</strong> — Included FREE</p>
-            {{#if upsell_note}}
-            <p style="margin:6px 0;font-size:14px;color:#00e5ff">⭐ <strong>{{upsell_note}}</strong></p>
-            {{/if}}
-          </div>
-        </td>
-      </tr>
+        <!-- Part 1 -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px">
+          <tr>
+            <td>
+              <a href="https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link"
+                 class="drive-link"
+                 style="display:block;background:rgba(255,106,0,0.1);border:1px solid rgba(255,106,0,0.35);color:#ff9a3c;text-decoration:none;font-size:14px;font-weight:700;padding:13px 16px;border-radius:12px;text-align:center;line-height:1.3">
+                📁&nbsp; Bundle — Part 1
+              </a>
+            </td>
+          </tr>
+        </table>
 
-      <!-- HOW TO START -->
-      <tr>
-        <td style="padding:24px 36px 0">
-          <p style="margin:0 0 14px;font-weight:800;font-size:14px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">🚀 How To Start Earning</p>
-          <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-              <td style="vertical-align:top;padding:0 0 12px">
-                <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;margin-right:10px">1</span>
-                <span style="font-size:14px;color:#e0e0f0">Click the Download button above → save videos to your phone</span>
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align:top;padding:0 0 12px">
-                <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;margin-right:10px">2</span>
-                <span style="font-size:14px;color:#e0e0f0">Post 2–3 reels/shorts daily on Instagram, YouTube & Facebook</span>
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align:top">
-                <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:13px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;margin-right:10px">3</span>
-                <span style="font-size:14px;color:#e0e0f0">Watch followers grow — monetize via affiliate links & brand deals</span>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+        <!-- Part 2 -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px">
+          <tr>
+            <td>
+              <a href="https://drive.google.com/drive/folders/0B-l7yn8Mkthyd2libWxRX2ZUNEE?resourcekey=0-2cKiETKA1Jpf8bQUNREuSg"
+                 class="drive-link"
+                 style="display:block;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.3);color:#00e5ff;text-decoration:none;font-size:14px;font-weight:700;padding:13px 16px;border-radius:12px;text-align:center;line-height:1.3">
+                📁&nbsp; Bundle — Part 2
+              </a>
+            </td>
+          </tr>
+        </table>
 
-      <!-- INVOICE TABLE -->
-      <tr>
-        <td style="padding:24px 36px 0">
-          <p style="margin:0 0 14px;font-weight:800;font-size:14px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">🧾 Invoice / Order Summary</p>
-          <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d1a;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)">
-            <tr style="background:rgba(255,255,255,0.05)">
-              <th style="padding:10px 12px;text-align:left;font-size:12px;color:#a0a0c0;letter-spacing:1px;text-transform:uppercase">Item</th>
-              <th style="padding:10px 12px;text-align:center;font-size:12px;color:#a0a0c0;letter-spacing:1px;text-transform:uppercase">Qty</th>
-              <th style="padding:10px 12px;text-align:right;font-size:12px;color:#a0a0c0;letter-spacing:1px;text-transform:uppercase">Price</th>
-            </tr>
-            {{item_rows}}
-            <tr style="background:rgba(255,106,0,0.08)">
-              <td colspan="2" style="padding:12px;font-weight:900;font-size:15px;color:#fff">TOTAL PAID</td>
-              <td style="padding:12px;text-align:right;font-family:monospace;font-size:22px;font-weight:900;color:#ffd700">{{total}}</td>
-            </tr>
-          </table>
-          <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px">
-            <tr>
-              <td style="font-size:12px;color:#a0a0c0">Order ID: <strong style="color:#e0e0f0">{{order_id}}</strong></td>
-              <td style="font-size:12px;color:#a0a0c0;text-align:right">Date: <strong style="color:#e0e0f0">{{order_date}}</strong></td>
-            </tr>
-            <tr>
-              <td colspan="2" style="font-size:12px;color:#a0a0c0;padding-top:4px">Phone: <strong style="color:#e0e0f0">{{phone}}</strong></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+        <!-- Part 3 -->
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <a href="https://drive.google.com/drive/folders/0B7G7wRlZICfEfmpnOEZacG9xQV9yTW94YUZqd3VyWXpteHpoZ3FYWkJFMlFJeWw5aFdaOTQ?resourcekey=0-kp9uzSHcG6clU0w_6l5szA"
+                 class="drive-link"
+                 style="display:block;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.3);color:#00ff88;text-decoration:none;font-size:14px;font-weight:700;padding:13px 16px;border-radius:12px;text-align:center;line-height:1.3">
+                📁&nbsp; Bundle — Part 3
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
-      <!-- FOOTER -->
-      <tr>
-        <td style="padding:28px 36px 36px">
-          <div style="height:1px;background:rgba(255,255,255,0.07);margin-bottom:22px"></div>
-          <p style="margin:0 0 6px;font-size:14px;color:#a0a0c0;text-align:center">
-            📩 Need help? Reply to this email or contact us:
-          </p>
-          <p style="margin:0 0 6px;font-size:14px;color:#00e5ff;text-align:center">
-            aroshi.vaidya25@gmail.com | @its.aroshi_vaidya
-          </p>
-          <p style="margin:16px 0 0;font-size:11px;color:rgba(160,160,192,0.4);text-align:center">
-            © 2026 Cartoon Stories Bundle. This is your official purchase receipt.<br>
-            30-Day money-back guarantee — no questions asked.
-          </p>
-        </td>
-      </tr>
+    <!-- ── WHAT'S INCLUDED ── -->
+    <tr>
+      <td class="section" style="padding:0 24px">
+        <div style="background:rgba(255,106,0,0.07);border:1px solid rgba(255,106,0,0.2);border-radius:14px;padding:18px 18px">
+          <p style="margin:0 0 10px;font-weight:800;font-size:12px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">📦 What's In Your Bundle</p>
+          <p style="margin:0 0 7px;font-size:13px;color:#e0e0f0;line-height:1.5">✅ <strong>2000+ Cartoon Moral Stories</strong> — HD MP4 with subtitles</p>
+          <p style="margin:0 0 7px;font-size:13px;color:#e0e0f0;line-height:1.5">✅ <strong>500+ Short Cartoon Stories</strong> — Bonus, FREE</p>
+          <p style="margin:0 0 7px;font-size:13px;color:#e0e0f0;line-height:1.5">✅ <strong>100% Copyright Free</strong> — Safe on all platforms</p>
+          <p style="margin:0 0 7px;font-size:13px;color:#e0e0f0;line-height:1.5">✅ <strong>Completely Editable</strong> — Add your logo &amp; watermark</p>
+          <p style="margin:0;font-size:13px;color:#00ff88;line-height:1.5">🎁 <strong>₹12,000 Mega Bonus Pack</strong> — Included FREE</p>
+        </div>
+      </td>
+    </tr>
 
-    </table>
+    <!-- ── HOW TO START ── -->
+    <tr>
+      <td class="section" style="padding:20px 24px 0">
+        <p style="margin:0 0 12px;font-weight:800;font-size:12px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">🚀 How To Start Earning</p>
+
+        <!-- Step 1 -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px">
+          <tr>
+            <td width="34" valign="top" style="padding-top:1px">
+              <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:12px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px">1</span>
+            </td>
+            <td style="padding-left:8px">
+              <span class="step-text" style="font-size:13px;color:#e0e0f0;line-height:1.6">Click any Download button above → save videos to your phone</span>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Step 2 -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px">
+          <tr>
+            <td width="34" valign="top" style="padding-top:1px">
+              <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:12px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px">2</span>
+            </td>
+            <td style="padding-left:8px">
+              <span class="step-text" style="font-size:13px;color:#e0e0f0;line-height:1.6">Post 2–3 reels/shorts daily on Instagram, YouTube &amp; Facebook</span>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Step 3 -->
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="34" valign="top" style="padding-top:1px">
+              <span style="display:inline-block;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-weight:900;font-size:12px;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px">3</span>
+            </td>
+            <td style="padding-left:8px">
+              <span class="step-text" style="font-size:13px;color:#e0e0f0;line-height:1.6">Watch followers grow — earn via affiliate links &amp; brand deals</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ── INVOICE ── -->
+    <tr>
+      <td class="section" style="padding:20px 24px 0">
+        <p style="margin:0 0 10px;font-weight:800;font-size:12px;color:#ffd700;letter-spacing:1px;text-transform:uppercase">🧾 Invoice / Order Summary</p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d1a;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)">
+          <tr style="background:rgba(255,255,255,0.05)">
+            <th style="padding:9px 10px;text-align:left;font-size:11px;color:#a0a0c0;letter-spacing:1px;text-transform:uppercase;font-weight:700">Item</th>
+            <th style="padding:9px 10px;text-align:right;font-size:11px;color:#a0a0c0;letter-spacing:1px;text-transform:uppercase;font-weight:700;white-space:nowrap">Price</th>
+          </tr>
+          {{item_rows}}
+          <tr style="background:rgba(255,106,0,0.1)">
+            <td style="padding:11px 10px;font-weight:900;font-size:14px;color:#fff">TOTAL PAID</td>
+            <td class="total-amt" style="padding:11px 10px;text-align:right;font-size:20px;font-weight:900;color:#ffd700">{{total}}</td>
+          </tr>
+        </table>
+
+        <!-- Order meta -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:8px">
+          <tr class="meta-row">
+            <td class="meta-cell" style="font-size:11px;color:#a0a0c0;padding:3px 0">Order ID: <strong style="color:#e0e0f0">{{order_id}}</strong></td>
+            <td class="meta-cell" style="font-size:11px;color:#a0a0c0;padding:3px 0;text-align:right">Date: <strong style="color:#e0e0f0">{{order_date}}</strong></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-size:11px;color:#a0a0c0;padding:3px 0">Phone: <strong style="color:#e0e0f0">{{phone}}</strong></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ── FOOTER ── -->
+    <tr>
+      <td class="footer-sec" style="padding:24px 24px 28px">
+        <div style="height:1px;background:rgba(255,255,255,0.07);margin-bottom:18px"></div>
+        <p style="margin:0 0 6px;font-size:13px;color:#a0a0c0;text-align:center;line-height:1.6">
+          📩 Need help? Reply to this email or reach us at:
+        </p>
+        <p style="margin:0 0 4px;font-size:13px;color:#00e5ff;text-align:center;font-weight:700">
+          aroshi.vaidya25@gmail.com
+        </p>
+        <p style="margin:0;font-size:13px;color:#00e5ff;text-align:center;font-weight:700">
+          Instagram: @its.aroshi_vaidya
+        </p>
+        <p style="margin:16px 0 0;font-size:11px;color:rgba(160,160,192,0.35);text-align:center;line-height:1.6">
+          © 2026 Cartoon Stories Bundle. Official purchase receipt.<br>
+          30-day money-back guarantee — no questions asked.
+        </p>
+      </td>
+    </tr>
+
+  </table>
   </td></tr>
 </table>
 </body>
