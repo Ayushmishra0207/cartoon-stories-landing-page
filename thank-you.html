@@ -158,9 +158,7 @@
 
   <!-- Download button -->
   <div id="downloadSection">
-    <a class="btn-drive" id="driveBtn" href="#" target="_blank">
-      📁 Download Your 2000+ Videos Now
-    </a>
+    <div id="driveBtns" style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px"></div>
 
     <div class="step-list">
       <div class="step">
@@ -209,7 +207,11 @@
 </div>
 
 <script>
-  const DRIVE_LINK  = 'https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link';
+  const DRIVE_LINKS = [
+    { label: '📁 Download Bundle — Part 1', url: 'https://drive.google.com/file/d/1-0gvvIlFXFdpgS3ds1GGXTrrNXpbP-gO/view?usp=drive_link' },
+    { label: '📁 Download Bundle — Part 2', url: 'https://drive.google.com/drive/folders/0B-l7yn8Mkthyd2libWxRX2ZUNEE?resourcekey=0-2cKiETKA1Jpf8bQUNREuSg' },
+    { label: '📁 Download Bundle — Part 3', url: 'https://drive.google.com/drive/folders/0B7G7wRlZICfEfmpnOEZacG9xQV9yTW94YUZqd3VyWXpteHpoZ3FYWkJFMlFJeWw5aFdaOTQ?resourcekey=0-kp9uzSHcG6clU0w_6l5szA' },
+  ];
   const ACCESS_DAYS = 15;
 
   function setExpired() {
@@ -274,7 +276,15 @@
       if (Date.now() > expiryTs) {
         setExpired();
       } else {
-        document.getElementById('driveBtn').href = DRIVE_LINK;
+        const btnsContainer = document.getElementById('driveBtns');
+        DRIVE_LINKS.forEach(link => {
+          const a = document.createElement('a');
+          a.className = 'btn-drive';
+          a.href = link.url;
+          a.target = '_blank';
+          a.textContent = link.label;
+          btnsContainer.appendChild(a);
+        });
         updateTimer(purchaseTs);
         startConfetti();
       }
