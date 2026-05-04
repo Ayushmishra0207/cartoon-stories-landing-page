@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ad Posters — Cartoon Stories Bundle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d0d1a;
+    font-family: 'Nunito', sans-serif;
+    padding: 30px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .page-title {
+    font-family: 'Bangers', cursive;
+    font-size: 32px;
+    color: #ff6a00;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .page-sub { color: #a0a0c0; font-size: 14px; text-align: center; }
+
+  .poster-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .poster-label {
+    font-family: 'Bangers', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #a0a0c0;
+  }
+
+  /* ══════════════════════════════
+     POSTER — 9:16 (540 × 960 display = 1080×1920 real)
+  ══════════════════════════════ */
+  .poster {
+    width: 540px;
+    height: 960px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+    flex-shrink: 0;
+    background: #07070f;
+  }
+
+  /* BG layers */
+  .bg { position: absolute; inset: 0; }
+  .bg-grad-ig {
+    background:
+      radial-gradient(ellipse 100% 55% at 50% -5%,  rgba(225,48,108,0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 70%  40% at 5%  70%,  rgba(255,106,0,0.25)  0%, transparent 55%),
+      radial-gradient(ellipse 60%  45% at 95% 85%,  rgba(131,58,180,0.2)  0%, transparent 55%),
+      linear-gradient(180deg, #100818 0%, #050510 100%);
+  }
+  .bg-grad-yt {
+    background:
+      radial-gradient(ellipse 100% 55% at 50% -5%,  rgba(255,0,0,0.45)    0%, transparent 60%),
+      radial-gradient(ellipse 70%  40% at 5%  70%,  rgba(255,106,0,0.22)  0%, transparent 55%),
+      radial-gradient(ellipse 60%  45% at 95% 85%,  rgba(255,50,50,0.15)  0%, transparent 55%),
+      linear-gradient(180deg, #150505 0%, #050510 100%);
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glow orbs */
+  .orb { position: absolute; border-radius: 50%; filter: blur(55px); pointer-events: none; }
+
+  /* Content */
+  .content {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 26px 24px;
+  }
+
+  /* Platform strip at top */
+  .platform-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .platform-pill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+  }
+  .pill-ig  { background: linear-gradient(135deg,#e1306c,#833ab4); color:#fff; box-shadow: 0 4px 16px rgba(225,48,108,0.4); }
+  .pill-yt  { background: linear-gradient(135deg,#ff0000,#cc0000); color:#fff; box-shadow: 0 4px 16px rgba(255,0,0,0.4); }
+  .pill-fb  { background: linear-gradient(135deg,#1877f2,#0d5dbf); color:#fff; box-shadow: 0 4px 16px rgba(24,119,242,0.4); }
+  .pill-sep { color: rgba(255,255,255,0.3); font-size: 16px; }
+
+  /* Top tag */
+  .top-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 5px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* Main headline */
+  .h-eyebrow {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .h-main {
+    font-family: 'Bangers', cursive;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: 2px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff 15%, #ff9a3c 55%, #ffd700 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 3px 10px rgba(255,106,0,0.35));
+    margin-bottom: 6px;
+  }
+  .h-sub {
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    letter-spacing: 4px;
+    text-align: center;
+    color: #00e5ff;
+    text-shadow: 0 0 16px rgba(0,229,255,0.7);
+    margin-bottom: 14px;
+  }
+
+  /* Money row */
+  .money-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    background: rgba(255,215,0,0.07);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 50px;
+    padding: 8px 20px;
+  }
+  .money-icon { font-size: 20px; }
+  .money-text { font-size: 13px; font-weight: 900; color: #ffd700; }
+
+  /* Price block */
+  .price-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .p-old { font-size: 16px; color: rgba(255,255,255,0.3); text-decoration: line-through; font-weight: 700; }
+  .p-new {
+    font-family: 'Bangers', cursive;
+    font-size: 56px;
+    line-height: 1;
+    color: #ffd700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 24px rgba(255,215,0,0.55), 0 4px 14px rgba(255,106,0,0.4);
+  }
+  .p-chip {
+    background: #00ff88;
+    color: #000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 5px 8px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Platform results */
+  .platform-results {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .pr-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .pr-ig { background: rgba(225,48,108,0.12); border: 1px solid rgba(225,48,108,0.25); }
+  .pr-yt { background: rgba(255,0,0,0.1);     border: 1px solid rgba(255,0,0,0.2);     }
+  .pr-ic { font-size: 18px; display: block; margin-bottom: 4px; }
+  .pr-num {
+    font-family: 'Bangers', cursive;
+    font-size: 17px;
+    display: block;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .pr-label { font-size: 9.5px; color: #a0a0c0; font-weight: 700; line-height: 1.3; }
+
+  /* What's inside mini */
+  .inside-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .inside-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .inside-icon { font-size: 15px; flex-shrink: 0; }
+  .inside-text { font-size: 10.5px; color: #e0e0f0; font-weight: 800; line-height: 1.3; }
+
+  /* Testimonial */
+  .testi {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 12px;
+    padding: 10px 12px;
+    width: 100%;
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .t-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#ff6a00,#ff3cac);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; color: #fff; flex-shrink: 0;
+  }
+  .t-stars { font-size: 10px; color: #ffd700; }
+  .t-text  { font-size: 10px; color: #c0c0d8; line-height: 1.55; margin-top: 2px; }
+  .t-name  { font-size: 9.5px; color: #ff9a3c; font-weight: 900; margin-top: 3px; }
+
+  /* CTA */
+  .cta {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6a00, #ff3cac);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 900;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(255,106,0,0.55);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .link-pill {
+    text-align: center;
+    font-size: 10.5px;
+    color: #a0a0c0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 50px;
+    padding: 6px 18px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .link-pill span { color: #00e5ff; font-weight: 900; }
+
+  /* Bottom badges */
+  .badges {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 9.5px;
+    color: #00ff88;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ctrl-btn {
+    background: linear-gradient(135deg,#ff6a00,#ff3cac);
+    color: #fff;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 11px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(255,106,0,0.4);
+    transition: all 0.2s;
+  }
+  .ctrl-btn:hover { transform: scale(1.05); }
+  .note { color: rgba(255,255,255,0.3); font-size: 12px; text-align: center; max-width: 560px; }
+</style>
+</head>
+<body>
+
+<div class="page-title">📱 AD POSTERS STUDIO</div>
+<p class="page-sub">Instagram Reels + YouTube Shorts — right-click any poster → Save Image As</p>
+
+<!-- ══════════════════════════════════════
+     POSTER 1 — INSTAGRAM REELS (9:16)
+══════════════════════════════════════ -->
+<div class="poster-wrap">
+  <div class="poster-label">📱 INSTAGRAM REELS POSTER (1080×1920)</div>
+
+  <div class="poster" id="poster-ig">
+    <div class="bg bg-grad-ig"></div>
+    <div class="bg bg-grid"></div>
+    <div class="orb" style="width:280px;height:280px;background:rgba(225,48,108,0.25);top:-60px;left:-60px"></div>
+    <div class="orb" style="width:220px;height:220px;background:rgba(131,58,180,0.2);bottom:160px;right:-40px"></div>
+    <div class="orb" style="width:160px;height:160px;background:rgba(255,106,0,0.15);bottom:60px;left:30px"></div>
+
+    <div class="content">
+      <!-- Platform strip -->
+      <div class="platform-strip">
+        <div class="platform-pill pill-ig">📱 Instagram</div>
+        <span class="pill-sep">+</span>
+        <div class="platform-pill pill-yt">▶️ YouTube</div>
+        <span class="pill-sep">+</span>
+        <div class="platform-pill pill-fb">👥 Facebook</div>
+      </div>
+
+      <div class="top-tag">🔥 Monetization Bundle — 90% OFF</div>
+
+      <div class="h-eyebrow">Grow Your Channel &amp; Earn Online</div>
+      <div class="h-main">2000+<br>CARTOON</div>
+      <div class="h-sub">STORIES BUNDLE</div>
+
+      <div class="money-row">
+        <span class="money-icon">💰</span>
+        <span class="money-text">Earn ₹30,000–₹1,00,000/Month from Home!</span>
+      </div>
+
+      <div class="price-block">
+        <div class="p-old">₹999</div>
+        <div class="p-new">₹99</div>
+        <div class="p-chip">90%<br>OFF</div>
+      </div>
+
+      <!-- Per-platform results -->
+      <div class="platform-results">
+        <div class="pr-card pr-ig">
+          <span class="pr-ic">📱</span>
+          <span class="pr-num">20K+</span>
+          <span class="pr-label">Instagram<br>Followers/Month</span>
+        </div>
+        <div class="pr-card pr-yt">
+          <span class="pr-ic">▶️</span>
+          <span class="pr-num">Monetize</span>
+          <span class="pr-label">YouTube in<br>15–30 Days</span>
+        </div>
+        <div class="pr-card pr-ig" style="background:rgba(255,215,0,0.08);border-color:rgba(255,215,0,0.2)">
+          <span class="pr-ic">💸</span>
+          <span class="pr-num">₹1.2L</span>
+          <span class="pr-label">Earned by<br>Creators</span>
+        </div>
+      </div>
+
+      <!-- What's inside -->
+      <div class="inside-grid">
+        <div class="inside-item"><span class="inside-icon">🎬</span><span class="inside-text">2000+ Cartoon Videos HD</span></div>
+        <div class="inside-item"><span class="inside-icon">🎁</span><span class="inside-text">500+ Bonus Stories FREE</span></div>
+        <div class="inside-item"><span class="inside-icon">🛡️</span><span class="inside-text">No Copyright Strikes</span></div>
+        <div class="inside-item"><span class="inside-icon">✏️</span><span class="inside-text">Add Your Logo &amp; Brand</span></div>
+        <div class="inside-item"><span class="inside-icon">⚡</span><span class="inside-text">Instant Download Access</span></div>
+        <div class="inside-item"><span class="inside-icon">💎</span><span class="inside-text">₹12,000 Bonus Pack FREE</span></div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="testi">
+        <div class="t-avatar">K</div>
+        <div>
+          <div class="t-stars">⭐⭐⭐⭐⭐</div>
+          <div class="t-text">"Hit 20K followers in 1 month &amp; made ₹1.2L from affiliate links — this bundle changed everything!"</div>
+          <div class="t-name">— Krishna Makvana &nbsp;|&nbsp; Verified Buyer</div>
+        </div>
+      </div>
+
+      <div class="cta">🛒 Grab Now — Only ₹99 Today!</div>
+      <div class="link-pill">🔗 Link in Bio &nbsp;|&nbsp; <span>@its.aroshi_vaidya</span></div>
+
+      <div class="badges">
+        <div class="badge">✅ Instant Download</div>
+        <div class="badge">🔒 Secure Payment</div>
+        <div class="badge">🎁 ₹12K Bonus FREE</div>
+        <div class="badge">📱 Works on All Platforms</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="howToSave()">📸 How to Save This Poster</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     POSTER 2 — YOUTUBE CHANNEL (9:16)
+══════════════════════════════════════ -->
+<div class="poster-wrap">
+  <div class="poster-label">▶️ YOUTUBE SHORTS POSTER (1080×1920)</div>
+
+  <div class="poster" id="poster-yt">
+    <div class="bg bg-grad-yt"></div>
+    <div class="bg bg-grid"></div>
+    <div class="orb" style="width:300px;height:300px;background:rgba(255,0,0,0.22);top:-70px;left:-50px"></div>
+    <div class="orb" style="width:200px;height:200px;background:rgba(255,60,0,0.15);bottom:180px;right:-30px"></div>
+    <div class="orb" style="width:160px;height:160px;background:rgba(255,215,0,0.1);bottom:60px;left:30px"></div>
+
+    <div class="content">
+      <!-- Platform strip -->
+      <div class="platform-strip">
+        <div class="platform-pill pill-yt" style="font-size:13px;padding:8px 18px">▶️ YouTube Channel Monetization</div>
+      </div>
+
+      <div class="top-tag">🚀 Monetize in 15 Days — 90% OFF</div>
+
+      <div class="h-eyebrow">Start Your YouTube Journey Today</div>
+      <div class="h-main">2000+<br>CARTOON</div>
+      <div class="h-sub">VIDEOS BUNDLE</div>
+
+      <div class="money-row">
+        <span class="money-icon">▶️</span>
+        <span class="money-text">Monetize YouTube Fast — No Face, No Skill!</span>
+      </div>
+
+      <div class="price-block">
+        <div class="p-old">₹999</div>
+        <div class="p-new">₹99</div>
+        <div class="p-chip">90%<br>OFF</div>
+      </div>
+
+      <!-- YouTube specific results -->
+      <div class="platform-results">
+        <div class="pr-card pr-yt">
+          <span class="pr-ic">📈</span>
+          <span class="pr-num">4000hrs</span>
+          <span class="pr-label">Watch Time<br>Eligibility Fast</span>
+        </div>
+        <div class="pr-card pr-yt">
+          <span class="pr-ic">👥</span>
+          <span class="pr-num">1000+</span>
+          <span class="pr-label">Subscribers<br>in 30 Days</span>
+        </div>
+        <div class="pr-card pr-yt" style="background:rgba(255,215,0,0.08);border-color:rgba(255,215,0,0.2)">
+          <span class="pr-ic">💸</span>
+          <span class="pr-num">Earn</span>
+          <span class="pr-label">YouTube Ads<br>Revenue Daily</span>
+        </div>
+      </div>
+
+      <!-- What's inside -->
+      <div class="inside-grid">
+        <div class="inside-item"><span class="inside-icon">🎬</span><span class="inside-text">2000+ Shorts-Ready Videos</span></div>
+        <div class="inside-item"><span class="inside-icon">🛡️</span><span class="inside-text">No Copyright / No Strike</span></div>
+        <div class="inside-item"><span class="inside-icon">📺</span><span class="inside-text">HD Quality — YouTube Approved</span></div>
+        <div class="inside-item"><span class="inside-icon">🎁</span><span class="inside-text">500+ Bonus Videos FREE</span></div>
+        <div class="inside-item"><span class="inside-icon">✏️</span><span class="inside-text">Add Channel Branding</span></div>
+        <div class="inside-item"><span class="inside-icon">💎</span><span class="inside-text">₹12,000 Bonus Pack FREE</span></div>
+      </div>
+
+      <!-- Steps mini -->
+      <div class="testi" style="flex-direction:column;gap:7px;padding:12px 14px">
+        <div style="font-size:11px;font-weight:900;color:#ffd700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px">How It Works</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;font-size:11px;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+          <span style="font-size:10.5px;color:#e0e0f0">Buy &amp; download 2000+ videos instantly</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;font-size:11px;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+          <span style="font-size:10.5px;color:#e0e0f0">Upload 3–5 videos daily on YouTube Shorts</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:linear-gradient(135deg,#ff0000,#cc0000);color:#fff;font-size:11px;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+          <span style="font-size:10.5px;color:#e0e0f0">Hit 1K subs + 4K hrs → YouTube pays you 💰</span>
+        </div>
+      </div>
+
+      <div class="cta">▶️ Start Your YouTube Journey — ₹99!</div>
+      <div class="link-pill">🔗 <span>ayushmishra0207.github.io/cartoon-stories-landing-page</span></div>
+
+      <div class="badges">
+        <div class="badge">✅ No Face Needed</div>
+        <div class="badge">🔒 No Copyright Risk</div>
+        <div class="badge">⚡ Instant Access</div>
+        <div class="badge">💰 Earn from Day 1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="howToSave()">📸 How to Save This Poster</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     POSTER 3 — COMBINED (Square 1:1)
+══════════════════════════════════════ -->
+<div class="poster-wrap">
+  <div class="poster-label">⬜ INSTAGRAM FEED / STORY SQUARE (1080×1080)</div>
+
+  <div class="poster" id="poster-sq" style="height:540px">
+    <div class="bg" style="background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(255,106,0,0.3) 0%,transparent 65%),radial-gradient(ellipse 60% 50% at 10% 80%,rgba(225,48,108,0.2) 0%,transparent 55%),radial-gradient(ellipse 50% 45% at 90% 75%,rgba(255,0,0,0.15) 0%,transparent 55%),linear-gradient(180deg,#0d0510 0%,#050510 100%)"></div>
+    <div class="bg bg-grid"></div>
+    <div class="orb" style="width:240px;height:240px;background:rgba(255,106,0,0.2);top:-50px;left:-50px"></div>
+    <div class="orb" style="width:180px;height:180px;background:rgba(225,48,108,0.18);bottom:-30px;right:-30px"></div>
+
+    <div class="content" style="padding:22px 22px 18px;justify-content:space-between">
+      <div style="text-align:center;width:100%">
+        <div class="platform-strip" style="margin-bottom:10px">
+          <div class="platform-pill pill-ig">📱 Instagram</div>
+          <span class="pill-sep">+</span>
+          <div class="platform-pill pill-yt">▶️ YouTube</div>
+        </div>
+        <div style="font-family:'Bangers',cursive;font-size:46px;line-height:0.95;background:linear-gradient(135deg,#fff 15%,#ff9a3c 55%,#ffd700 85%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 8px rgba(255,106,0,0.35))">2000+ CARTOON<br>STORIES BUNDLE</div>
+        <div style="font-family:'Bangers',cursive;font-size:16px;color:#00e5ff;letter-spacing:3px;text-shadow:0 0 12px rgba(0,229,255,0.7);margin-top:4px">MONETIZE INSTAGRAM &amp; YOUTUBE</div>
+      </div>
+
+      <div style="display:flex;gap:10px;width:100%;margin:12px 0">
+        <div style="flex:1;background:rgba(225,48,108,0.12);border:1px solid rgba(225,48,108,0.25);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:18px">📱</div>
+          <div style="font-family:'Bangers',cursive;font-size:20px;color:#fff">20K+</div>
+          <div style="font-size:10px;color:#a0a0c0;font-weight:800">Followers/Month</div>
+        </div>
+        <div style="flex:1;background:rgba(255,0,0,0.1);border:1px solid rgba(255,0,0,0.2);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:18px">▶️</div>
+          <div style="font-family:'Bangers',cursive;font-size:20px;color:#fff">15 Days</div>
+          <div style="font-size:10px;color:#a0a0c0;font-weight:800">YouTube Monetize</div>
+        </div>
+        <div style="flex:1;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:10px;text-align:center">
+          <div style="font-size:18px">💰</div>
+          <div style="font-family:'Bangers',cursive;font-size:20px;color:#ffd700">₹1.2L</div>
+          <div style="font-size:10px;color:#a0a0c0;font-weight:800">Earned by Users</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;width:100%;background:rgba(255,106,0,0.08);border:1px solid rgba(255,106,0,0.2);border-radius:14px;padding:10px 14px;margin-bottom:12px">
+        <div>
+          <div style="font-family:'Bangers',cursive;font-size:38px;color:#ffd700;text-shadow:0 0 16px rgba(255,215,0,0.5);line-height:1">₹99</div>
+          <div style="font-size:11px;color:#a0a0c0;text-decoration:line-through">₹999</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:11px;color:#e0e0f0;font-weight:800;line-height:1.5">✅ 2000+ HD Videos &nbsp;✅ 100% Copyright Free<br>✅ Instant Download &nbsp;&nbsp; ✅ ₹12,000 Bonuses FREE</div>
+        </div>
+        <div style="background:#00ff88;color:#000;font-size:11px;font-weight:900;padding:6px 10px;border-radius:8px;text-align:center;line-height:1.3">90%<br>OFF</div>
+      </div>
+
+      <div style="width:100%;background:linear-gradient(135deg,#ff6a00,#ff3cac);color:#fff;font-size:16px;font-weight:900;padding:13px 20px;border-radius:50px;text-align:center;box-shadow:0 6px 22px rgba(255,106,0,0.5)">
+        🛒 Grab Now — ₹99 Only | Link in Bio 🔗
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="howToSave()">📸 How to Save This Poster</button>
+  </div>
+</div>
+
+<p class="note">
+  💡 <strong>To save:</strong> Right-click any poster → "Save image as" | Or screenshot the poster area<br>
+  For perfect quality: Use browser zoom 200% on any poster → screenshot it
+</p>
+
+<script>
+function howToSave() {
+  alert(
+    '📸 HOW TO SAVE YOUR AD POSTER\n\n' +
+    '✅ EASIEST: Right-click the poster → "Save image as"\n\n' +
+    '📐 FOR PERFECT 1080×1920px QUALITY:\n' +
+    '   1. Zoom browser to 200% (Ctrl + scroll)\n' +
+    '   2. Screenshot just the poster\n' +
+    '   3. Crop in any photo editor\n\n' +
+    '📱 ON MOBILE: Long-press the poster → Save Image'
+  );
+}
+
+// Subtle floating animation for orbs
+const orbs = document.querySelectorAll('.orb');
+let t = 0;
+(function animate() {
+  t += 0.006;
+  orbs.forEach((o, i) => {
+    const sx = Math.sin(t + i * 1.2) * 12;
+    const sy = Math.cos(t + i * 0.8) * 8;
+    o.style.transform = `translate(${sx}px,${sy}px)`;
+  });
+  requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>
